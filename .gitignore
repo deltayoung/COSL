@@ -1,0 +1,35 @@
+#.gitignore - to ignore the following files/folder while committing to repository
+################################
+
+#Visual Studio files
+*.suo
+*.user
+
+#Project-generated folders and their contents
+bin/*
+obj/*
+
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

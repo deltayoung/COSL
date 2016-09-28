@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TV(June)", "SharpGLProgram\TV(June).csproj", "{C4B126FE-61F2-4640-B10F-6130556835CB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EFA9B3B2-0869-4207-B169-F5E9C4F55E38}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C4B126FE-61F2-4640-B10F-6130556835CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4B126FE-61F2-4640-B10F-6130556835CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4B126FE-61F2-4640-B10F-6130556835CB}.Debug|x86.ActiveCfg = Debug|x86
+		{C4B126FE-61F2-4640-B10F-6130556835CB}.Debug|x86.Build.0 = Debug|x86
+		{C4B126FE-61F2-4640-B10F-6130556835CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4B126FE-61F2-4640-B10F-6130556835CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4B126FE-61F2-4640-B10F-6130556835CB}.Release|x86.ActiveCfg = Release|x86
+		{C4B126FE-61F2-4640-B10F-6130556835CB}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

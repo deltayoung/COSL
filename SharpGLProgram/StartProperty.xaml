@@ -1,0 +1,13 @@
+﻿<Window x:Class="SharpGLProgram.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Tunnel Visualisation"  Height="150" Width="300" >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Button Grid.Column="0" Content="Stream" Margin="20" Name="StartStream" Click="StartStream_Click" />
+        <Button Grid.Column="1" Content="Load From File" Margin="20" Name="StartLoadFromFile" Click="StartLoadFromFile_Click" />
+    </Grid>
+</Window>

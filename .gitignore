@@ -6,8 +6,8 @@
 *.user
 
 #Project-generated folders and their contents
-bin/*
-obj/*
+SharpGLProgram/bin/*
+SharpGLProgram/obj/*
 
 # Compiled source #
 ###################

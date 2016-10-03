@@ -525,7 +525,7 @@ namespace SharpGLProgram
             //  Get the OpenGL object.
             OpenGL gl = openGLControl.OpenGL;
 
-            //test if depthRender is out of screen, update the depthAnchor to move towards depthRender
+            //test if depthRender is out of screen, update the depthAnchor to move towards depthRender to adjust the screen view
             if (testPointOutsideScreen(gl, new vec3(0, 0, depthRender)))
             {
                 depthAnchor = depthRender + 0.5f*(depthRender-depthAnchor);
@@ -804,7 +804,9 @@ namespace SharpGLProgram
 
             if (pickingFlag == 1)
             {
-                DgDepth.Text = doglegResult.dataList[pick_Depth].depth.ToString("f2"); 
+                double pickedDepth = doglegResult.dataList[pick_Depth].depth;
+                if (m_eLoggingMode != LoggingMode.Time) pickedDepth = -pickedDepth;
+                DgDepth.Text = pickedDepth.ToString("f2"); 
                 pickingFlag = 0;
             }
          }
@@ -1134,7 +1136,9 @@ namespace SharpGLProgram
             tboxText.ItemsSource = allCurveNames;  // color 
 
             //Wanghj:2016.8.15
-            ICurve curveDevod = iCurveManager.GetCurve(cDEV);
+            ICurve curveDevod = null;
+            if (cDEV != null)
+                curveDevod = iCurveManager.GetCurve(cDEV);
             if (curveDevod != null)
             {
                 ICurveData curveData = curveDevod.GetProcessCurveData();
@@ -1145,7 +1149,9 @@ namespace SharpGLProgram
                 tboxDev.SelectedValue = curveDevod.CurveAliasName;
             }
             //Wanghj:2016.8.15
-            ICurve curveDazod = iCurveManager.GetCurve(cDAZ);
+            ICurve curveDazod = null;
+            if (cDAZ != null)
+                curveDazod = iCurveManager.GetCurve(cDAZ);
             if (curveDazod != null)
             {
                 ICurveData curveData = curveDazod.GetProcessCurveData();
@@ -1157,7 +1163,9 @@ namespace SharpGLProgram
             }
 
             //Wanghj:2016.8.15
-            ICurve curveAzw = iCurveManager.GetCurve(cAZW);
+            ICurve curveAzw = null;
+            if (cAZW != null)
+                curveAzw = iCurveManager.GetCurve(cAZW);
             if (curveAzw != null)
             {
                 ICurveData curveData = curveAzw.GetProcessCurveData();
@@ -1169,7 +1177,9 @@ namespace SharpGLProgram
             }
                         
             //Wanghj:2016.8.15
-            ICurve curveSprd = iCurveManager.GetCurve(cSPRD);
+            ICurve curveSprd = null;
+            if (cSPRD != null)
+                curveSprd = iCurveManager.GetCurve(cSPRD);
             if (curveSprd != null)
             {
                 ICurveData curveData = curveSprd.GetProcessCurveData();
@@ -1179,7 +1189,9 @@ namespace SharpGLProgram
                 tboxCap.SelectedValue = curveSprd.CurveAliasName;
             }
             //Wanghj:2016.8.15
-            ICurve curveBhiop = iCurveManager.GetCurve(cBHIOP);
+            ICurve curveBhiop = null;
+            if (cBHIOP != null)
+                curveBhiop = iCurveManager.GetCurve(cBHIOP);
             if (curveBhiop != null)
             {
                 ICurveData curveData = curveBhiop.GetProcessCurveData();
@@ -1351,68 +1363,48 @@ namespace SharpGLProgram
 
             //Here is just an example of getting one curve "SPRD", you can get all the curves from CurveManager.
             //Wanghj:2016.8.15
-            ICurve curve = iCurveManager.GetCurve(cSPRD);
+            ICurve curve = cSPRD != null ? iCurveManager.GetCurve(cSPRD) : null;
             bool firstSPRDPointDataCome = false;
             long depthInDUSPRD = 0;
             ulong timeInMSSPRD = 0;
 
             //Wanghj:2016.8.15
-            ICurve curve1 = iCurveManager.GetCurve(cDEV);
+            ICurve curve1 = cDEV != null ? iCurveManager.GetCurve(cDEV) : null;
             bool firstDEVPointDataCome = false;
             long depthInDUDEV = 0;
             ulong timeInMSDEV = 0;
 
             //Wanghj:2016.8.15
-            ICurve curve2 = iCurveManager.GetCurve(cDAZ);
+            ICurve curve2 = cDAZ != null ? iCurveManager.GetCurve(cDAZ) : null;
             bool firstDAZPointDataCome = false;
             long depthInDUDAZ = 0;
             ulong timeInMSDAZ = 0;
 
             //Wanghj:2016.8.15
-            ICurve curve3 = iCurveManager.GetCurve(cBHIOP);
+            ICurve curve3 = cBHIOP != null ? iCurveManager.GetCurve(cBHIOP) : null;
             bool firstBHIOPPointDataCome = false;
             long depthInDUBHIOP = 0;
             ulong timeInMSBHIOP = 0;
 
 
-            ICurve curve4 = iCurveManager.GetCurve(cAZW);
+            ICurve curve4 = cAZW != null ? iCurveManager.GetCurve(cAZW) : null;
             bool firstAZWPointDataCome = false;
             long depthInDUAZW = 0;
             ulong timeInMSAZW = 0;
 
 
-
             if (curve == null) // sprd curve 
-            {
                 System.Windows.MessageBox.Show("Missing SPRD curve");
-                return;
-            }
-            
             if (curve1 == null) // dev curve 
-            {
                 System.Windows.MessageBox.Show("Missing DEV curve");
-                return;
-            }
-
             if (curve2 == null) // daz curve 
-            {
                 System.Windows.MessageBox.Show("Missing DAZ curve");
-                return;
-            }
-
             if (curve3 == null) // color curve
-            {
                 System.Windows.MessageBox.Show("Missing BHIOP curve");
-                return;
-            }
-          
-
             if (curve4 == null) // AZW curve 
-            {
                 System.Windows.MessageBox.Show("Missing AZW curve");
+            if (curve == null || curve1 == null || curve2 == null || curve3 == null || curve4 == null)
                 return;
-            }
-
 
             // setting the size of the color data per contour 
             colorInformationSize = (int)curve3.CurvePointElementCount;
@@ -1684,7 +1676,8 @@ namespace SharpGLProgram
 
                                         // this is after testing for the dez and daz
                                         // now we test if the holder class is within range of the color 
-                                        if ( ( tunnelPhysicalDataHolder.getDataCount() > 0 ) && (curveBHIOPData.withinRange((float)tunnelPhysicalDataHolder.getFirstDepth()) == true)) 
+                                        //if ( ( tunnelPhysicalDataHolder.getDataCount() > 0 ) && (curveBHIOPData.withinRange((float)tunnelPhysicalDataHolder.getFirstDepth()) == true)) 
+                                        if (curveBHIOPData.withinRange((float)tunnelPhysicalDataHolder.getFirstDepth()) == true) 
                                         {
 
                                              // calvin_change 7
@@ -1701,10 +1694,13 @@ namespace SharpGLProgram
 
 
                                         }
+                                        if (tunnelPhysicalDataHolder.getDataCount() > 0)
+                                        {
+                                            depthRender = (float)tunnelPhysicalDataHolder.getLastDepth(); // update of depthRender as new contours (without texture) stream in
+                                            Action a = delegate { DepthTextBox.Text = (Math.Abs(depthRender)).ToString(); };
+                                            DepthTextBox.Dispatcher.Invoke(a);
+                                        }
 
-                                        depthRender = (float)tunnelPhysicalDataHolder.getLastDepth(); // update of depthRender as new contours (without texture) stream in
-                                        Action a = delegate { DepthTextBox.Text = depthRender.ToString(); };
-                                        DepthTextBox.Dispatcher.Invoke(a);
                                                                           
                                     }
                                     else // if the number of success (levels) exceed the depth
@@ -1837,8 +1833,6 @@ namespace SharpGLProgram
                 
             }
          
-            // start drawing only when there is contour added
-            startdraw = 1;
         }
 
         // Calvin check: where did this appear at?  
@@ -1919,21 +1913,35 @@ namespace SharpGLProgram
                 // uses the actual array index
                 dgc = doglegResult.getElementValue(pick_Depth) * Convert.ToDouble(UnitSetting.Text);
                 //System.Windows.MessageBox.Show("Pick depth = " + pick_Depth);
+
+                if (m_eLoggingMode != LoggingMode.Time)
+                    dgc = -dgc;
             }
             else // read DgDepth.Text user text input
             {
                 double userTextDepthInput = double.Parse(DgDepth.Text);
-
-                if    (   (userTextDepthInput >= doglegResult.getFirstDepth() && userTextDepthInput <= doglegResult.getLastDepth())  ||
-                    (userTextDepthInput >= doglegResult.getLastDepth() && userTextDepthInput <= doglegResult.getFirstDepth())) 
+                double firstDepth = doglegResult.getFirstDepth(), lastDepth = doglegResult.getLastDepth();
+                if (m_eLoggingMode != LoggingMode.Time)
                 {
+                    firstDepth = -firstDepth;
+                    lastDepth = -lastDepth;
+                }
+               
+                if    ( (userTextDepthInput >= firstDepth && userTextDepthInput <= lastDepth)  ||
+                    (userTextDepthInput >= lastDepth && userTextDepthInput <= firstDepth) ) 
+                {
+                    if (m_eLoggingMode != LoggingMode.Time)
+                        userTextDepthInput = -userTextDepthInput;
                     dgc = doglegResult.dataList[doglegResult.getIndex(userTextDepthInput)].dataP[0] * Convert.ToDouble(UnitSetting.Text);
                    // System.Windows.MessageBox.Show("Pick depth = " + doglegResult.getIndex(userTextDepthInput));
+
+                    if (m_eLoggingMode != LoggingMode.Time)
+                        dgc = -dgc;
                 }
                 else
                 {
                     dgc = -1;
-                    System.Windows.MessageBox.Show("Invalid dogleg depth input! Enter valid range: [" + doglegResult.getFirstDepth() + ", " + doglegResult.getLastDepth() + "]");
+                    System.Windows.MessageBox.Show("Invalid dogleg depth input! Enter valid range: [" + firstDepth + ", " + lastDepth + "]");
                 }
             }
             DogLegAns.Text = dgc.ToString("F5");
@@ -2040,6 +2048,9 @@ namespace SharpGLProgram
 
         public void LoadFileDetails(string fileName, bool defaultName)
         {
+            // start drawing right away
+            startdraw = 1;
+
             ProgressWindow progress = new ProgressWindow();
             progress.Owner = this;
             progress.WindowStartupLocation = WindowStartupLocation.CenterOwner;
@@ -2559,6 +2570,10 @@ namespace SharpGLProgram
         {
             Pause.IsEnabled = true;
              StreamFlag = 1;
+
+            // start drawing right away
+             startdraw = 1;
+
              Window_Loaded(sender, e);
              UpdateVisibilityDogleg();
         }
@@ -2696,11 +2711,6 @@ namespace SharpGLProgram
         {
             var secondWindow = new PropertyWindow();
             //string selection = secondWindow.ChoiceLinearLog.ToString();
-        }
-
-        private void checkBox1_Checked(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void DgCheckBox_Checked(object sender, RoutedEventArgs e)

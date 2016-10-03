@@ -40,7 +40,7 @@ namespace SharpGLProgram
 
                       
             // Create the per pixel shader.
-            // if you ever wish to create a new vert or frag file, remember to set the bulid properties to "embedded source" 
+            // if you ever wish to create a new vert or frag file, remember to set the build properties to "embedded source" 
             shaderID = new ShaderProgram();
             shaderID.Create(gl,
                 ManifestResourceLoader.LoadTextFile(@"Shaders\pickingVS.vert"),

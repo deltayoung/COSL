@@ -574,7 +574,7 @@ namespace SharpGLProgram
                     base1 = b * 3;
                     base2 = c * 3;
                     
-                    gl.Vertex(tunnelCurve.dataList[a].dataP[base1], tunnelCurve.dataList[a].dataP[base1 + 1], tunnelCurve.dataList[a].dataP[base1+2]);
+                    gl.Vertex(tunnelCurve.dataList[a].dataP[base1], tunnelCurve.dataList[a].dataP[base1 + 1], tunnelCurve.dataList[a].dataP[base1 + 2]);
                     gl.Vertex(tunnelCurve.dataList[a].dataP[base2], tunnelCurve.dataList[a].dataP[base2 + 1], tunnelCurve.dataList[a].dataP[base2 + 2]);
 
                 }

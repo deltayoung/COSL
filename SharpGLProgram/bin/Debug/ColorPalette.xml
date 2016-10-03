@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="utf-8"?>
+<palettes>
+  <palette name="Gray" levels="62">
+    <colorItem color="0, 0, 0"/>
+    <colorItem color="255, 255, 255" />
+  </palette>
+  <palette name="WhiteYellowRed" levels="64">
+    <colorItem color="255, 255, 255" position="0.0"/>
+    <colorItem color="255, 255, 0" position="0.5"/>
+    <colorItem color="255, 0, 0" position="1.0"/>
+  </palette>
+  <palette name="SLAM">
+    <colorItem color="153, 255, 255"/>
+    <colorItem color="103, 190, 248"/>
+    <colorItem color="57, 93, 237" />
+    <colorItem color="65, 28, 210" />
+    <colorItem color="104, 29, 154" />
+    <colorItem color="102, 25, 102" />
+  </palette>
+  <palette name="RMI">
+    <colorItem color="255, 255, 255" position="0.0"/>
+    <colorItem color="255, 255, 242" position="0.0159"/>
+    <colorItem color="255, 255, 230" position="0.0318"/>
+    <colorItem color="255, 255, 219" position="0.0477"/>
+    <colorItem color="255, 255, 207" position="0.0636"/>
+    <colorItem color="255, 255, 194" position="0.0795"/>
+    <colorItem color="255, 255, 181" position="0.0954"/>
+    <colorItem color="255, 255, 168" position="0.1113"/>
+    <colorItem color="255, 255, 156" position="0.1272"/>
+    <colorItem color="255, 255, 140" position="0.1431"/>
+    <colorItem color="255, 255, 128" position="0.159"/>
+    <colorItem color="255, 255, 112" position="0.1749"/>
+    <colorItem color="255, 255, 97" position="0.1908"/>
+    <colorItem color="255, 250, 79" position="0.2067"/>
+    <colorItem color="255, 242, 59" position="0.2226"/>
+    <colorItem color="255, 235, 41" position="0.2385"/>
+    <colorItem color="255, 227, 20" position="0.2544"/>
+    <colorItem color="255, 219, 0" position="0.2703"/>
+    <colorItem color="255, 214, 0" position="0.2862"/>
+    <colorItem color="255, 209, 0" position="0.3021"/>
+    <colorItem color="255, 207, 0" position="0.318"/>
+    <colorItem color="255, 204, 0" position="0.3339"/>
+    <colorItem color="255, 196, 0" position="0.3498"/>
+    <colorItem color="255, 189, 0" position="0.3657"/>
+    <colorItem color="255, 181, 0" position="0.3816"/>
+    <colorItem color="255, 173, 0" position="0.3975"/>
+    <colorItem color="255, 166, 0" position="0.4134"/>
+    <colorItem color="255, 158, 0" position="0.4293"/>
+    <colorItem color="255, 150, 0" position="0.4452"/>
+    <colorItem color="255, 145, 0" position="0.4611"/>
+    <colorItem color="255, 138, 0" position="0.477"/>
+    <colorItem color="255, 128, 0" position="0.4929"/>
+    <colorItem color="255, 117, 0" position="0.5088"/>
+    <colorItem color="255, 107, 0" position="0.5247"/>
+    <colorItem color="255, 99, 0" position="0.5406"/>
+    <colorItem color="247, 92, 0" position="0.5565"/>
+    <colorItem color="242, 84, 0" position="0.5724"/>
+    <colorItem color="237, 77, 0" position="0.5883"/>
+    <colorItem color="232, 69, 0" position="0.6042"/>
+    <colorItem color="227, 56, 0" position="0.6201"/>
+    <colorItem color="224, 41, 3" position="0.636"/>
+    <colorItem color="219, 23, 5" position="0.6519"/>
+    <colorItem color="214, 8,	5" position="0.6678"/>
+    <colorItem color="209, 0,	13" position="0.6837"/>
+    <colorItem color="204, 0,	18" position="0.6996"/>
+    <colorItem color="196, 0,	33" position="0.7155"/>
+    <colorItem color="189, 0,	46" position="0.7314"/>
+    <colorItem color="184, 0,	54" position="0.7473"/>
+    <colorItem color="179, 0, 64" position="0.7632"/>
+    <colorItem color="171, 0, 79" position="0.7791"/>
+    <colorItem color="166, 0, 89" position="0.795"/>
+    <colorItem color="158, 0, 105" position="0.8109"/>
+    <colorItem color="150, 0, 99" position="0.8268"/>
+    <colorItem color="143, 0,	97" position="0.8427"/>
+    <colorItem color="135, 0,	94" position="0.8586"/>
+    <colorItem color="128, 0,	92" position="0.8745"/>
+    <colorItem color="117, 0, 87" position="0.8904"/>
+    <colorItem color="110, 0, 87" position="0.9063"/>
+    <colorItem color="99, 0, 82" position="0.9222"/>
+    <colorItem color="89, 0, 79" position="0.9381"/>
+    <colorItem color="74, 0, 69" position="0.954"/>
+    <colorItem color="54, 0, 51" position="0.9699"/>
+    <colorItem color="36, 0, 31" position="0.9858"/>
+    <colorItem color="15, 0, 13" position="1.0"/>
+  </palette>
+  <palette name="EARTH">
+    <colorItem color="0, 0, 0" />
+    <colorItem color="36, 0, 0" />
+    <colorItem color="73, 0, 0" />
+    <colorItem color="109, 0, 0" />
+    <colorItem color="146,31,0" />
+    <colorItem color="182,63,0" />
+    <colorItem color="219,95,0" />
+    <colorItem color="255,127,0" />
+    <colorItem color="255,159,0" />
+    <colorItem color="255,191,0" />
+    <colorItem color="255,223,0" />
+    <colorItem color="255,255,255" />
+  </palette>
+  <palette name="BROWN">
+    <colorItem color="0, 0, 0" />
+    <colorItem color="10, 8, 6" />
+    <colorItem color="20, 17, 12" />
+    <colorItem color="30, 25, 18" />
+    <colorItem color="40, 34, 24" />
+    <colorItem color="50, 43, 30" />
+    <colorItem color="60, 51, 36" />
+    <colorItem color="70, 60, 43" />
+    <colorItem color="80, 69, 49" />
+    <colorItem color="90, 77, 55" />
+    <colorItem color="100, 86, 61" />
+    <colorItem color="110, 95, 67" />
+    <colorItem color="120, 103, 73" />
+    <colorItem color="130, 112, 80" />
+    <colorItem color="140, 120, 86" />
+    <colorItem color="150, 129, 92" />
+    <colorItem color="160, 138, 98" />
+    <colorItem color="170, 146, 104" />
+    <colorItem color="180, 155, 110" />
+    <colorItem color="190, 164, 117" />
+    <colorItem color="200, 172, 123" />
+    <colorItem color="207, 180, 130" />
+    <colorItem color="212, 188, 143" />
+    <colorItem color="217, 195, 155" />
+    <colorItem color="221, 203, 168" />
+    <colorItem color="226, 210, 180" />
+    <colorItem color="231, 218, 193" />
+    <colorItem color="236, 225, 205" />
+    <colorItem color="241, 233, 218" />
+    <colorItem color="246, 240, 230" />
+    <colorItem color="251, 248, 243" />
+    <colorItem color="255, 255, 255" />
+  </palette>
+  <palette name="CEMENT">
+    <colorItem color="255, 255, 0" />
+    <colorItem color="120, 120, 255" />
+    <colorItem color="105, 105, 255" />
+    <colorItem color="90, 90, 255" />
+    <colorItem color="75, 75, 255" />
+    <colorItem color="60, 60, 255" />
+    <colorItem color="45, 45, 255" />
+    <colorItem color="30, 30, 255" />
+    <colorItem color="15, 15, 255" />
+    <colorItem color="0, 0, 255" />
+    <colorItem color="255, 105, 105" />
+    <colorItem color="255, 90, 90" />
+    <colorItem color="255, 75, 75" />
+    <colorItem color="255, 60, 60" />
+    <colorItem color="255, 45, 45" />
+    <colorItem color="255, 30, 30" />
+    <colorItem color="255, 15, 15" />
+    <colorItem color="255, 0, 0" />
+    <colorItem color="240, 0, 0" />
+    <colorItem color="225, 0, 0" />
+    <colorItem color="210, 0, 0" />
+    <colorItem color="195, 0, 0" />
+    <colorItem color="180, 0, 0" />
+    <colorItem color="165, 0, 0" />
+  </palette>
+  <palette name="CSTHK">
+    <colorItem color="5, 255, 5" />
+    <colorItem color="30, 255, 30" />
+    <colorItem color="55, 255, 55" />
+    <colorItem color="80, 255, 80" />
+    <colorItem color="105, 255, 105" />
+    <colorItem color="130, 255, 130" />
+    <colorItem color="155, 255, 155" />
+    <colorItem color="180, 255, 180" />
+    <colorItem color="205, 255, 205" />
+    <colorItem color="230, 255, 230" />
+    <colorItem color="255, 255, 255" />
+    <colorItem color="230, 230, 255" />
+    <colorItem color="205, 205, 255" />
+    <colorItem color="180, 180, 255" />
+    <colorItem color="155, 155, 255" />
+    <colorItem color="130, 130, 255" />
+    <colorItem color="105, 105, 255" />
+    <colorItem color="80, 80, 255" />
+    <colorItem color="55, 55, 255" />
+    <colorItem color="30, 30, 255" />
+    <colorItem color="5, 5, 255" />
+  </palette>
+  <palette name="EARTHTONE">
+    <colorItem color="255, 255, 255" />
+    <colorItem color="255, 244, 191" />
+    <colorItem color="255, 233, 127" />
+    <colorItem color="255, 222, 63" />
+    <colorItem color="255, 211, 0" />
+    <colorItem color="255, 200, 0" />
+    <colorItem color="255, 189, 0" />
+    <colorItem color="255, 178, 0" />
+    <colorItem color="255, 166, 0" />
+    <colorItem color="255, 155, 0" />
+    <colorItem color="255, 144, 0" />
+    <colorItem color="255, 133, 0" />
+    <colorItem color="255, 122, 0" />
+    <colorItem color="255, 111, 0" />
+    <colorItem color="241, 100, 0" />
+    <colorItem color="227, 89, 0" />
+    <colorItem color="213, 77, 0" />
+    <colorItem color="199, 66, 0" />
+    <colorItem color="184, 55, 0" />
+    <colorItem color="170, 44, 0" />
+    <colorItem color="156, 33, 0" />
+    <colorItem color="142, 22, 0" />
+    <colorItem color="127, 11, 0" />
+    <colorItem color="113, 0, 0" />
+    <colorItem color="99, 0, 0" />
+    <colorItem color="85, 0, 0" />
+    <colorItem color="71, 0, 0" />
+    <colorItem color="56, 0, 0" />
+    <colorItem color="42, 0, 0" />
+    <colorItem color="28, 0, 0" />
+    <colorItem color="14, 0, 0" />
+    <colorItem color="0, 0, 0" />
+  </palette>
+  <palette name="GRAY">
+    <colorItem color="0, 0, 0" />
+    <colorItem color="8, 8, 8" />
+    <colorItem color="16, 16, 16" />
+    <colorItem color="24, 24, 24" />
+    <colorItem color="33, 33, 33" />
+    <colorItem color="41, 41, 41" />
+    <colorItem color="49, 49, 49" />
+    <colorItem color="57, 57, 57" />
+    <colorItem color="66, 66, 66" />
+    <colorItem color="74, 74, 74" />
+    <colorItem color="82, 82, 82" />
+    <colorItem color="90, 90, 90" />
+    <colorItem color="99, 99, 99" />
+    <colorItem color="107, 107, 107" />
+    <colorItem color="115, 115, 115" />
+    <colorItem color="123, 123, 123" />
+    <colorItem color="132, 132, 132" />
+    <colorItem color="140, 140, 140" />
+    <colorItem color="148, 148, 148" />
+    <colorItem color="156, 156, 156" />
+    <colorItem color="165, 165, 165" />
+    <colorItem color="173, 173, 173" />
+    <colorItem color="181, 181, 181" />
+    <colorItem color="189, 189, 189" />
+    <colorItem color="198, 198, 198" />
+    <colorItem color="206, 206, 206" />
+    <colorItem color="214, 214, 214" />
+    <colorItem color="222, 222, 222" />
+    <colorItem color="231, 231, 231" />
+    <colorItem color="239, 239, 239" />
+    <colorItem color="247, 247, 247" />
+    <colorItem color="255, 255, 255" />
+  </palette>
+  <palette name="HEATED">
+    <colorItem color="51, 0, 0" />
+    <colorItem color="68, 13, 0" />
+    <colorItem color="88, 27, 0" />
+    <colorItem color="107, 40, 0" />
+    <colorItem color="120, 50, 0" />
+    <colorItem color="132, 58, 0" />
+    <colorItem color="142, 65, 0" />
+    <colorItem color="150, 71, 0" />
+    <colorItem color="158, 78, 0" />
+    <colorItem color="166, 85, 0" />
+    <colorItem color="174, 91, 0" />
+    <colorItem color="182, 98, 0" />
+    <colorItem color="190, 104, 0" />
+    <colorItem color="198, 111, 0" />
+    <colorItem color="206, 118, 0" />
+    <colorItem color="214, 124, 0" />
+    <colorItem color="222, 131, 0" />
+    <colorItem color="230, 137, 0" />
+    <colorItem color="238, 144, 0" />
+    <colorItem color="246, 151, 0" />
+    <colorItem color="254, 157, 0" />
+    <colorItem color="255, 164, 0" />
+    <colorItem color="255, 170, 0" />
+    <colorItem color="255, 177, 0" />
+    <colorItem color="255, 185, 48" />
+    <colorItem color="255, 193, 100" />
+    <colorItem color="255, 201, 96" />
+    <colorItem color="255, 214, 92" />
+    <colorItem color="255, 229, 94" />
+    <colorItem color="255, 244, 148" />
+    <colorItem color="255, 255, 202" />
+    <colorItem color="255, 255, 255" />
+  </palette>
+   <palette name="RHEATED">
+    <colorItem color="255, 255, 255" />
+    <colorItem color="255, 255, 202" />
+    <colorItem color="255, 244, 148" />
+    <colorItem color="255, 229, 94" />
+    <colorItem color="255, 214, 92" />
+    <colorItem color="255, 201, 96" />
+    <colorItem color="255, 193, 100" />
+    <colorItem color="255, 185, 48" />
+    <colorItem color="255, 177, 0" />
+    <colorItem color="255, 170, 0" />
+    <colorItem color="255, 164, 0" />
+    <colorItem color="254, 157, 0" />
+    <colorItem color="246, 151, 0" />
+    <colorItem color="238, 144, 0" />
+    <colorItem color="230, 137, 0" />
+    <colorItem color="222, 131, 0" />
+    <colorItem color="214, 124, 0" />
+    <colorItem color="206, 118, 0" />
+    <colorItem color="198, 111, 0" />
+    <colorItem color="190, 104, 0" />
+    <colorItem color="182, 98, 0" />
+    <colorItem color="174, 91, 0" />
+    <colorItem color="166, 85, 0" />
+    <colorItem color="158, 78, 0" />
+    <colorItem color="150, 71, 0" />
+    <colorItem color="142, 65, 0" />
+    <colorItem color="132, 58, 0" />
+    <colorItem color="120, 50, 0" />
+    <colorItem color="107, 40, 0" />
+    <colorItem color="88, 27, 0" />
+    <colorItem color="68, 13, 0" />
+    <colorItem color="51, 0, 0" />
+  </palette>
+  <palette name="RAINBOW">
+    <colorItem color="0, 0, 255" />
+    <colorItem color="0, 33, 255" />
+    <colorItem color="0, 66, 255" />
+    <colorItem color="0, 99, 255" />
+    <colorItem color="0, 132, 255" />
+    <colorItem color="0, 165, 255" />
+    <colorItem color="0, 198, 255" />
+    <colorItem color="0, 231, 255" />
+    <colorItem color="0, 255, 247" />
+    <colorItem color="0, 255, 214" />
+    <colorItem color="0, 255, 181" />
+    <colorItem color="0, 255, 148" />
+    <colorItem color="0, 255, 115" />
+    <colorItem color="0, 255, 82" />
+    <colorItem color="0, 255, 49" />
+    <colorItem color="0, 255, 16" />
+    <colorItem color="16, 255, 0" />
+    <colorItem color="49, 255, 0" />
+    <colorItem color="82, 255, 0" />
+    <colorItem color="115, 255, 0" />
+    <colorItem color="148, 255, 0" />
+    <colorItem color="181, 255, 0" />
+    <colorItem color="214, 255, 0" />
+    <colorItem color="247, 255, 0" />
+    <colorItem color="255, 231, 0" />
+    <colorItem color="255, 198, 0" />
+    <colorItem color="255, 165, 0" />
+    <colorItem color="255, 132, 0" />
+    <colorItem color="255, 99, 0" />
+    <colorItem color="255, 66, 0" />
+    <colorItem color="255, 33, 0" />
+    <colorItem color="255, 0, 0" />
+  </palette>
+  <palette name="RHEATED">
+    <colorItem color="255, 255, 255" />
+    <colorItem color="255, 255, 202" />
+    <colorItem color="255, 244, 148" />
+    <colorItem color="255, 229, 94" />
+    <colorItem color="255, 214, 92" />
+    <colorItem color="255, 201, 96" />
+    <colorItem color="255, 193, 100" />
+    <colorItem color="255, 185, 48" />
+    <colorItem color="255, 177, 0" />
+    <colorItem color="255, 170, 0" />
+    <colorItem color="255, 164, 0" />
+    <colorItem color="254, 157, 0" />
+    <colorItem color="246, 151, 0" />
+    <colorItem color="238, 144, 0" />
+    <colorItem color="230, 137, 0" />
+    <colorItem color="222, 131, 0" />
+    <colorItem color="214, 124, 0" />
+    <colorItem color="206, 118, 0" />
+    <colorItem color="198, 111, 0" />
+    <colorItem color="190, 104, 0" />
+    <colorItem color="182, 98, 0" />
+    <colorItem color="174, 91, 0" />
+    <colorItem color="166, 85, 0" />
+    <colorItem color="158, 78, 0" />
+    <colorItem color="150, 71, 0" />
+    <colorItem color="142, 65, 0" />
+    <colorItem color="132, 58, 0" />
+    <colorItem color="120, 50, 0" />
+    <colorItem color="107, 40, 0" />
+    <colorItem color="88, 27, 0" />
+    <colorItem color="68, 13, 0" />
+    <colorItem color="51, 0, 0" />
+  </palette>
+  <palette name="SEISMIC">
+    <colorItem color="0, 0, 255" />
+    <colorItem color="16, 16, 255" />
+    <colorItem color="33, 33, 255" />
+    <colorItem color="49, 49, 255" />
+    <colorItem color="66, 66, 255" />
+    <colorItem color="82, 82, 255" />
+    <colorItem color="99, 99, 255" />
+    <colorItem color="115, 115, 255" />
+    <colorItem color="132, 132, 255" />
+    <colorItem color="148, 148, 255" />
+    <colorItem color="165, 165, 255" />
+    <colorItem color="181, 181, 255" />
+    <colorItem color="198, 198, 255" />
+    <colorItem color="214, 214, 255" />
+    <colorItem color="231, 231, 255" />
+    <colorItem color="247, 247, 255" />
+    <colorItem color="255, 247, 247" />
+    <colorItem color="255, 231, 231" />
+    <colorItem color="255, 214, 214" />
+    <colorItem color="255, 198, 198" />
+    <colorItem color="255, 181, 181" />
+    <colorItem color="255, 165, 165" />
+    <colorItem color="255, 148, 148" />
+    <colorItem color="255, 132, 132" />
+    <colorItem color="255, 115, 115" />
+    <colorItem color="255, 99, 99" />
+    <colorItem color="255, 82, 82" />
+    <colorItem color="255, 66, 66" />
+    <colorItem color="255, 49, 49" />
+    <colorItem color="255, 33, 33" />
+    <colorItem color="255, 16, 16" />
+    <colorItem color="255, 0, 0" />
+  </palette>
+  <palette name="SUNBOW">
+    <colorItem color="255, 0, 0" />
+    <colorItem color="239, 16, 0" />
+    <colorItem color="222, 33, 0" />
+    <colorItem color="206, 49, 0" />
+    <colorItem color="189, 66, 0" />
+    <colorItem color="173, 82, 0" />
+    <colorItem color="156, 99, 0" />
+    <colorItem color="140, 115, 0" />
+    <colorItem color="123, 132, 0" />
+    <colorItem color="107, 148, 0" />
+    <colorItem color="90, 165, 0" />
+    <colorItem color="74, 181, 0" />
+    <colorItem color="57, 198, 0" />
+    <colorItem color="41, 214, 0" />
+    <colorItem color="24, 231, 0" />
+    <colorItem color="8, 247, 0" />
+    <colorItem color="0, 247, 8" />
+    <colorItem color="0, 231, 24" />
+    <colorItem color="0, 214, 41" />
+    <colorItem color="0, 198, 57" />
+    <colorItem color="0, 181, 74" />
+    <colorItem color="0, 165, 90" />
+    <colorItem color="0, 148, 107" />
+    <colorItem color="0, 132, 123" />
+    <colorItem color="0, 115, 140" />
+    <colorItem color="0, 99, 156" />
+    <colorItem color="0, 82, 173" />
+    <colorItem color="0, 66, 189" />
+    <colorItem color="0, 49, 206" />
+    <colorItem color="0, 33, 222" />
+    <colorItem color="0, 16, 239" />
+    <colorItem color="0, 0, 255" />
+  </palette>
+
+  <palette name="MCT">
+    <colorItem color="3, 0, 255"/>
+    <colorItem color="0, 127, 255"/>
+    <colorItem color="2, 194, 244" />
+    <colorItem color="0, 255, 179" />
+    <colorItem color="0, 254, 103"/>
+    <colorItem color="5, 253, 5" />
+    <colorItem color="5, 253, 5" />
+    <colorItem color="97, 255, 0" />
+    <colorItem color="192, 255, 0" />
+    <colorItem color="255, 253, 0" />
+    <colorItem color="248, 132, 0" />
+	<colorItem color="251, 4, 3" />
+  </palette>
+</palettes>
+
+
+
+
+
+

@@ -1011,12 +1011,12 @@ namespace SharpGLProgram
 
         // this function is called by "StreamButton_Click", this is the first function to kickstart the streaming operation . 
         // bootstart the various managers. 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private bool Window_Loaded(object sender, RoutedEventArgs e)
         {
             m_iLoggingManager = ObjectFactory.CreateObject(ObjectType.LoggingManager_Net) as ILoggingManagerNet;
             m_iService = m_iLoggingManager.Service;
             if (m_iService == null)
-                return;
+                return false;
 
             // Monitor service event like activate, deactivate and state change.
             m_iService.SeviceEvent += new ServiceEventHandler(OnServiceEvent);
@@ -1026,7 +1026,9 @@ namespace SharpGLProgram
             if (res == false)
             {
                 System.Windows.MessageBox.Show("Initializing logging manager failed!");
+                return false;
             }
+            return true;
         }
         
         // called from the function "Window_Loaded" , 2nd function in the list of streaming operation 
@@ -2568,14 +2570,16 @@ namespace SharpGLProgram
 
         public void StreamButton_Click(object sender, RoutedEventArgs e)
         {
-            Pause.IsEnabled = true;
-             StreamFlag = 1;
+            if (Window_Loaded(sender, e))
+            {
+                Pause.IsEnabled = true;
+                StreamFlag = 1;
 
-            // start drawing right away
-             startdraw = 1;
+                // start drawing right away
+                startdraw = 1;
 
-             Window_Loaded(sender, e);
-             UpdateVisibilityDogleg();
+                UpdateVisibilityDogleg();
+            }
         }
 
         // dev and daz are all in radians

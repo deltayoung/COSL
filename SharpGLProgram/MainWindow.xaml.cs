@@ -2370,7 +2370,7 @@ namespace SharpGLProgram
                     if (dblIndexValues.Count() > 0)
                     {
                         double depthInDU = 0.0f;
-                        ulong timeInMS = 0;
+                        //ulong timeInMS = 0;
 
                         PrevCentroid = new vec3(0, 0, 0); // reset to zero point. 
                             

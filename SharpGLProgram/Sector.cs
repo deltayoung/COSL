@@ -220,7 +220,7 @@ namespace SharpGLProgram
             float[] sliceIndex = new float[(pointPerSlice + 1)];
 
 
-            int a, b, c;
+            int a, b;
             vec3 centroid = new vec3(0, 0, 0);
             // standardPoints is always the "previous" slice  , slicePoints is the "current" slice 
             for (a = 0; a <= pointPerSlice; a++)

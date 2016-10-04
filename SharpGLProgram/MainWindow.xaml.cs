@@ -2580,6 +2580,23 @@ namespace SharpGLProgram
 
                 UpdateVisibilityDogleg();
             }
+            else
+            {
+                RefreshCurves.IsEnabled = false;
+                DgCheckBox.IsEnabled = false;
+                Interval.IsEnabled = false;
+                Color.IsEnabled = false;
+                Print.IsEnabled = false;
+                Export.IsEnabled = false;
+                tboxAzw.IsEnabled = false;
+                tboxCap.IsEnabled = false;
+                tboxDaz.IsEnabled = false;
+                tboxDev.IsEnabled = false;
+                tboxText.IsEnabled = false;
+                MgDec.IsEnabled = false;
+                MgDecGoto.IsEnabled = false;
+                Pause.IsEnabled = false;
+            }
         }
 
         // dev and daz are all in radians

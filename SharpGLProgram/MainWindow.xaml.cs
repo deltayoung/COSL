@@ -1912,7 +1912,7 @@ namespace SharpGLProgram
             {
                 // uses the actual array index
                 dgc = doglegResult.getElementValue(pick_Depth) * Convert.ToDouble(UnitSetting.Text);
-                //System.Windows.MessageBox.Show("Pick depth = " + pick_Depth);
+                System.Windows.MessageBox.Show("dgc = " + dgc.ToString());
 
                 if (m_eLoggingMode != LoggingMode.Time)
                     dgc = -dgc;

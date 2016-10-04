@@ -1677,28 +1677,30 @@ namespace SharpGLProgram
                                         // this is after testing for the dez and daz
                                         // now we test if the holder class is within range of the color 
                                         //if ( ( tunnelPhysicalDataHolder.getDataCount() > 0 ) && (curveBHIOPData.withinRange((float)tunnelPhysicalDataHolder.getFirstDepth()) == true)) 
-                                        if (curveBHIOPData.withinRange((float)tunnelPhysicalDataHolder.getFirstDepth()) == true) 
-                                        {
-
-                                             // calvin_change 7
-                                            //depthRender = (float)tunnelPhysicalDataHolder.getFirstDepth();                                          
-
-                                            // calvin_change 9 
-                                            tunnelPhysicalDataHolder.setBoundingBox(ref XBoxCoord, ref YBoxCoord);
-
-
-                                            // sent event to the textbox to add one contour to the renderer 
-                                            DepthTextBox.Dispatcher.Invoke(DispatcherPriority.Normal, new Action<System.Windows.Controls.TextBox>(ShowText), DepthTextBox);
-
-                                            renderIndex++;
-
-
-                                        }
                                         if (tunnelPhysicalDataHolder.getDataCount() > 0)
                                         {
-                                            depthRender = (float)tunnelPhysicalDataHolder.getLastDepth(); // update of depthRender as new contours (without texture) stream in
-                                            Action a = delegate { DepthTextBox.Text = (Math.Abs(depthRender)).ToString(); };
-                                            DepthTextBox.Dispatcher.Invoke(a);
+                                            if (curveBHIOPData.withinRange((float)tunnelPhysicalDataHolder.getFirstDepth()) == true)
+                                            {
+
+                                                // calvin_change 7
+                                                depthRender = (float)tunnelPhysicalDataHolder.getFirstDepth();                                          
+
+                                                // calvin_change 9 
+                                                tunnelPhysicalDataHolder.setBoundingBox(ref XBoxCoord, ref YBoxCoord);
+
+
+                                                // sent event to the textbox to add one contour to the renderer 
+                                                DepthTextBox.Dispatcher.Invoke(DispatcherPriority.Normal, new Action<System.Windows.Controls.TextBox>(ShowText), DepthTextBox);
+
+                                                renderIndex++;
+
+                                            }
+                                            else if (renderIndex==0)
+                                            {
+                                                depthRender = (float)tunnelPhysicalDataHolder.getLastDepth(); // update of depthRender as new contours (without texture) stream in
+                                                Action a = delegate { DepthTextBox.Text = (Math.Abs(depthRender)).ToString(); };
+                                                DepthTextBox.Dispatcher.Invoke(a);
+                                            }
                                         }
 
                                                                           
@@ -1912,7 +1914,7 @@ namespace SharpGLProgram
             {
                 // uses the actual array index
                 dgc = doglegResult.getElementValue(pick_Depth) * Convert.ToDouble(UnitSetting.Text);
-                System.Windows.MessageBox.Show("dgc = " + dgc.ToString());
+                //System.Windows.MessageBox.Show("dgc = " + dgc.ToString());
 
                 if (m_eLoggingMode != LoggingMode.Time)
                     dgc = -dgc;
@@ -1946,7 +1948,6 @@ namespace SharpGLProgram
             }
             DogLegAns.Text = dgc.ToString("F5");
 
-            //DgDepth.Text = " ";  // 2 decimal places. 
             pick_Depth = -1;
             pick_Depth_f = -1.0f; // this is not important 
         }
@@ -2781,12 +2782,14 @@ namespace SharpGLProgram
 
             double upper = double.Parse(textBox2.Text);
             double lower = double.Parse(textBox1.Text);
-
+            double firstDepth = Math.Abs(doglegResult.getFirstDepth()), lastDepth = Math.Abs(doglegResult.getLastDepth());
+            double upperLimit = firstDepth < lastDepth ? lastDepth : firstDepth, lowerLimit = firstDepth < lastDepth ? firstDepth : lastDepth;
             int lowerIndex, upperIndex;
 
-            if (lower < doglegResult.getFirstDepth() || upper > doglegResult.getLastDepth() || lower >= upper)
+
+            if (lower < lowerLimit || upper > upperLimit || lower >= upper)
             {
-                System.Windows.MessageBox.Show("Invalid lower/upper depth inputs or upper depth value is equal to or lower than the lower depth value! Valid range of depth: [" + doglegResult.getFirstDepth() + ", " + doglegResult.getLastDepth() + "]");
+                System.Windows.MessageBox.Show("Invalid lower/upper depth inputs or upper depth value is equal to or lower than the lower depth value! Valid range of depth: [" + lowerLimit + ", " + upperLimit + "]");
                 return;
             }
 
@@ -2806,6 +2809,9 @@ namespace SharpGLProgram
             //doglegWriter.WriteLine("Depth               DEV             DAZ         Dogleg /25m         Dogleg /30m         Dogleg /100m");
             outputWriter.WriteLine("DogLeg Computation Result");
             outputWriter.WriteLine("Depth               DEV             DAZ         Dogleg /25m         Dogleg /30m         Dogleg /100m");
+
+            lower = m_eLoggingMode == LoggingMode.Time ? lower : -lower;
+            upper = m_eLoggingMode == LoggingMode.Time ? upper : -upper;
 
             if (lower < doglegResult.getFirstDepth()) // lower than permitted 
             {

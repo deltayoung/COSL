@@ -237,7 +237,7 @@ namespace SharpGLProgram
 
             
             double binSize = (double) NumColorLevels / MainWindow.rgbValues.Count();
-            int binNo, R1, G1, B1, R2, G2, B2;
+            int binNo;
             double binLoc, t;
 
             if (LinearMode)

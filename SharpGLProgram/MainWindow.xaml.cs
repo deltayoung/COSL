@@ -1926,10 +1926,15 @@ namespace SharpGLProgram
                 {
                     firstDepth = -firstDepth;
                     lastDepth = -lastDepth;
+					if (firstDepth > lastDepth)
+					{
+						double temp = firstDepth;
+						firstDepth = lastDepth;
+						lastDepth = temp;
+					}
                 }
                
-                if    ( (userTextDepthInput >= firstDepth && userTextDepthInput <= lastDepth)  ||
-                    (userTextDepthInput >= lastDepth && userTextDepthInput <= firstDepth) ) 
+                if (userTextDepthInput >= firstDepth && userTextDepthInput <= lastDepth) 
                 {
                     if (m_eLoggingMode != LoggingMode.Time)
                         userTextDepthInput = -userTextDepthInput;

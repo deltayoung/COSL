@@ -1683,7 +1683,7 @@ namespace SharpGLProgram
                                             {
 
                                                 // calvin_change 7
-                                                depthRender = (float)tunnelPhysicalDataHolder.getFirstDepth();                                          
+                                                //depthRender = (float)tunnelPhysicalDataHolder.getFirstDepth();                                          
 
                                                 // calvin_change 9 
                                                 tunnelPhysicalDataHolder.setBoundingBox(ref XBoxCoord, ref YBoxCoord);
@@ -1695,12 +1695,11 @@ namespace SharpGLProgram
                                                 renderIndex++;
 
                                             }
-                                            else if (renderIndex==0)
-                                            {
-                                                depthRender = (float)tunnelPhysicalDataHolder.getLastDepth(); // update of depthRender as new contours (without texture) stream in
-                                                Action a = delegate { DepthTextBox.Text = (Math.Abs(depthRender)).ToString(); };
-                                                DepthTextBox.Dispatcher.Invoke(a);
-                                            }
+                                            
+											depthRender = (float)tunnelPhysicalDataHolder.getLastDepth(); // update of depthRender as new contours (without texture) stream in
+                                            Action a = delegate { DepthTextBox.Text = (Math.Abs(depthRender)).ToString(); };
+                                            DepthTextBox.Dispatcher.Invoke(a);
+                                            
                                         }
 
                                                                           

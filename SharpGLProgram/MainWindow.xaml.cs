@@ -1910,7 +1910,7 @@ namespace SharpGLProgram
                 return;
             }
 
-            double dgc;
+            double dgc=-1;
             if (pick_Depth != -1) // user clicked on the tunnel, has a pick_depth 
             {
                 // uses the actual array index
@@ -1940,11 +1940,15 @@ namespace SharpGLProgram
                 {
                     if (m_eLoggingMode != LoggingMode.Time)
                         userTextDepthInput = -userTextDepthInput;
-                    dgc = doglegResult.dataList[doglegResult.getIndex(userTextDepthInput)].dataP[0] * Convert.ToDouble(UnitSetting.Text);
-                   // System.Windows.MessageBox.Show("Pick depth = " + doglegResult.getIndex(userTextDepthInput));
+					int indexCheck = doglegResult.getIndex(userTextDepthInput);
+					if (indexCheck >= 0 && indexCheck < doglegResult.dataList.Count())
+					{
+						dgc = doglegResult.dataList[indexCheck].dataP[0] * Convert.ToDouble(UnitSetting.Text);
+						// System.Windows.MessageBox.Show("Pick depth = " + doglegResult.getIndex(userTextDepthInput));
 
-                    if (m_eLoggingMode != LoggingMode.Time)
-                        dgc = -dgc;
+						if (m_eLoggingMode != LoggingMode.Time)
+							dgc = -dgc;
+					}
                 }
                 else
                 {

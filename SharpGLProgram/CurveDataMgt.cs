@@ -28,58 +28,93 @@ namespace SharpGLProgram
         // this is not affected by the up/down orientation problem 
         public int getIndex(double cDepth)
         {
-            if (dataList.Count() < 2) return 0; // just return zero if there is only 2 values 
+			if (dataList.Count() < 2) return 0; // just return zero if there is only 2 values 
 
-            // this is the interval 
-            double interval = dataList[1].depth - dataList[0].depth;
+			/* // Calvin's version
+			// this is the interval 
+			double interval = dataList[1].depth - dataList[0].depth;
 
-            int indexLocate = (int) ( (cDepth - dataList[0].depth) / interval ) ; 
+			int indexLocate = (int) ( (cDepth - dataList[0].depth) / interval ) ; 
 
-            if ( ( indexLocate < 0 ) || ( indexLocate >= dataList.Count()))  
-                return -1; 
-
-
-            // this is just an approximation, due to division errors and large array values, we need to refine the search 
-            bool searchfurther = true  ;
-
-            do
-            {
-                float distanceCurrent = Math.Abs((float)(cDepth - dataList[indexLocate].depth));
-
-                if (indexLocate != 0)
-                {
-                    float distanceSmallerIndex = Math.Abs((float)(cDepth - dataList[indexLocate-1].depth));
-
-                    if (distanceCurrent > distanceSmallerIndex)
-                    {
-                        indexLocate = indexLocate - 1;
-                        continue; 
-                    }
-                }
-
-                if (indexLocate != dataList.Count()-1 )
-                {
-                    float distanceHigherIndex = Math.Abs((float)(cDepth - dataList[indexLocate + 1].depth));
-
-                    if (distanceCurrent > distanceHigherIndex)
-                    {
-                        indexLocate = indexLocate + 1;
-                        continue; 
-                    }
-
-                }
-
-                searchfurther = false; 
-
-            } while (searchfurther == true); 
+			if ( ( indexLocate < 0 ) || ( indexLocate >= dataList.Count()))  
+				return -1; 
 
 
-            
+			// this is just an approximation, due to division errors and large array values, we need to refine the search 
+			bool searchfurther = true  ;
 
+			do
+			{
+				float distanceCurrent = Math.Abs((float)(cDepth - dataList[indexLocate].depth));
 
+				if (indexLocate != 0)
+				{
+					float distanceSmallerIndex = Math.Abs((float)(cDepth - dataList[indexLocate-1].depth));
 
-            return indexLocate; 
+					if (distanceCurrent > distanceSmallerIndex)
+					{
+						indexLocate = indexLocate - 1;
+						continue; 
+					}
+				}
+
+				if (indexLocate != dataList.Count()-1 )
+				{
+					float distanceHigherIndex = Math.Abs((float)(cDepth - dataList[indexLocate + 1].depth));
+
+					if (distanceCurrent > distanceHigherIndex)
+					{
+						indexLocate = indexLocate + 1;
+						continue; 
+					}
+
+				}
+
+				searchfurther = false; 
+
+			} while (searchfurther == true); 
+			
+			return indexLocate;
+			*/
+
+			// Binary search
+			int lowerDepthIndex = dataList[0].depth < dataList[dataList.Count() - 1].depth ? 0 : dataList.Count()-1;
+			int upperDepthIndex = lowerDepthIndex == 0 ? dataList.Count()-1 : 0;
+			return binaryFindIndex(cDepth, lowerDepthIndex, upperDepthIndex);
+             
         }
+
+		// find the index in dataList that contains the exact depth value; or the nearest depth value
+		// assume input indices are positive, in order, and within dataList.Count()
+		public int binaryFindIndex(double value, int lowIndex, int highIndex)
+		{
+			if (value < dataList[lowIndex].depth || value > dataList[highIndex].depth)	// out of bound
+				return -1;
+			else if (lowIndex == highIndex)
+				return lowIndex;
+			else if (highIndex - lowIndex == 1)	// within bound
+			{
+				if (value - dataList[lowIndex].depth < dataList[highIndex].depth - value)
+					return lowIndex;
+				else
+					return highIndex;
+			}
+			else
+			{
+				int a = binaryFindIndex(value, lowIndex, (lowIndex+highIndex)/2), b;
+				if (a == -1)
+				{
+					b = binaryFindIndex(value, (lowIndex+highIndex)/2+1, highIndex);
+					if (b == -1)
+						return -1;
+					else
+						return b;
+				}
+				else
+					return a;
+			}
+		}
+
 
                 
          // if the depth value is increasing, upwards is true. vice versa. 

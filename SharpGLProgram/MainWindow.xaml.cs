@@ -795,7 +795,7 @@ namespace SharpGLProgram
         {
             Point p = e.GetPosition(null);
                 
-            if (startdraw == 1)
+            if (startdraw == 1 && pickingFlag != 1)
             {
                 is_Left_Button_Pressed = true;  // set to true 
                 prev_Mouse_Loc = p;
@@ -834,7 +834,7 @@ namespace SharpGLProgram
             is_Right_Button_Pressed = false; 
         }
 
-        int pickingFlag = 0; // used to indicate once the f5 key is pressed. 
+        int pickingFlag = 0; // used to enable highlighting the selected contour when a left Ctrl button is pressed. 
         private void openGLControl_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             OpenGL gl = openGLControl.OpenGL;
@@ -1067,6 +1067,7 @@ namespace SharpGLProgram
                                         System.Windows.MessageBox.Show("A change in logging mode/direction was detected. The streaming will restart.");
                                         if (isPaused) Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ServiceEventResponsor2(handlePauseResume));
                                         Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ServiceEventResponsor2(refreshCurve));
+										Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ServiceEventResponsor2(clearDgInputs));
                                     }
                                     else if (firstStreamInitialization && duplicateTimeModeSignal)
                                     {
@@ -1915,10 +1916,10 @@ namespace SharpGLProgram
             {
                 // uses the actual array index
                 dgc = doglegResult.getElementValue(pick_Depth) * Convert.ToDouble(UnitSetting.Text);
-                //System.Windows.MessageBox.Show("dgc = " + dgc.ToString());
+                //System.Windows.MessageBox.Show("pick_Depth = " + pick_Depth.ToString() + ", dgc = " + dgc.ToString());
 
-                if (m_eLoggingMode != LoggingMode.Time)
-                    dgc = -dgc;
+                //if (m_eLoggingMode != LoggingMode.Time)
+                //    dgc = -dgc;
             }
             else // read DgDepth.Text user text input
             {
@@ -1946,8 +1947,8 @@ namespace SharpGLProgram
 						dgc = doglegResult.dataList[indexCheck].dataP[0] * Convert.ToDouble(UnitSetting.Text);
 						// System.Windows.MessageBox.Show("Pick depth = " + doglegResult.getIndex(userTextDepthInput));
 
-						if (m_eLoggingMode != LoggingMode.Time)
-							dgc = -dgc;
+						//if (m_eLoggingMode != LoggingMode.Time)
+						//	dgc = -dgc;
 					}
                 }
                 else
@@ -2837,14 +2838,11 @@ namespace SharpGLProgram
             //doglegWriter.WriteLine("DogLeg Computation Result");
             //doglegWriter.WriteLine("Depth               DEV             DAZ         Dogleg /25m         Dogleg /30m         Dogleg /100m");
             outputWriter.WriteLine("DogLeg Computation Result");
-            outputWriter.WriteLine("Depth               DEV             DAZ         Dogleg /25m         Dogleg /30m         Dogleg /100m");
+			outputWriter.WriteLine(String.Format("{0,20} {1,16} {2,16} {3,16} {4,16} {5,16}", "Depth", "DEV", "DAZ", "Dogleg /25m", "Dogleg /30m", "Dogleg /100m"));
 
-            lower = m_eLoggingMode == LoggingMode.Time ? lower : -lower;
-            upper = m_eLoggingMode == LoggingMode.Time ? upper : -upper;
-
-            if (lower < doglegResult.getFirstDepth()) // lower than permitted 
+            if (lower < lowerLimit) // lower than permitted 
             {
-                if (upper < doglegResult.getFirstDepth())
+                if (upper < lowerLimit)
                 {
                     //doglegWriter.WriteLine("Out of Range!");
                     //doglegWriter.Flush();
@@ -2854,33 +2852,34 @@ namespace SharpGLProgram
                 }
                 else
                 {
-                    lower = doglegResult.getFirstDepth();
+                    lower = lowerLimit;
                     lowerIndex = 0;
                 }
             }
             else
-                lowerIndex = doglegResult.getIndex(lower);
+				lowerIndex = doglegResult.getIndex(m_eLoggingMode == LoggingMode.Time ? lower : -lower);
 
 
 
-            if (upper > doglegResult.getLastDepth())
-            {
-                if (lower > doglegResult.getLastDepth())
-                {
-                    //doglegWriter.WriteLine("Out of Range!");
-                    //doglegWriter.Flush();
-                    outputWriter.WriteLine("Out of Range!");
-                    outputWriter.Flush();
-                    return; //exit 
-                }
-                else
-                {
-                    upper = doglegResult.getLastDepth();
-                    upperIndex = doglegResult.getCount();
-                }
-            }
-            else
-                upperIndex = doglegResult.getIndex(upper) + 1;
+			if (upper > upperLimit)
+			{
+				if (lower > upperLimit)
+				{
+					//doglegWriter.WriteLine("Out of Range!");
+					//doglegWriter.Flush();
+					outputWriter.WriteLine("Out of Range!");
+					outputWriter.Flush();
+					return; //exit 
+				}
+				else
+				{
+					upper = upperLimit;
+					upperIndex = doglegResult.getCount();
+				}
+			}
+			else
+				upperIndex = doglegResult.getIndex(m_eLoggingMode == LoggingMode.Time ? upper : -upper);
+                //upperIndex = doglegResult.getIndex(upper) + 1; // why +1?
 
 
             // now we have valid upper and lower dogleg values 
@@ -2889,19 +2888,31 @@ namespace SharpGLProgram
 
             while (b < upper)
             {
-                while (doglegResult.dataList[a].depth < b)
-                    a++;
+				while (Math.Abs(doglegResult.dataList[a].depth) < b)
+				{
+					//a++;
+					if (m_eLoggingMode == LoggingMode.Depth && m_eLoggingDir == LoggingDir.Up)
+						a--;
+					else
+						a++;
+				}
 
                 double baseDogleg = doglegResult.dataList[a].dataP[0] * 25.0f;
                 double baseDogleg1 = doglegResult.dataList[a].dataP[0] * 30.0f;
                 double baseDogleg2 = doglegResult.dataList[a].dataP[0] * 100.0f;
 
 
-
+				//Depth               DEV             DAZ         Dogleg /25m         Dogleg /30m         Dogleg /100m
+				//============
                 //doglegWriter.WriteLine(doglegResult.dataList[a].depth.ToString("F4") + "        " + doglegResult.dataList[a].dataP[1].ToString("F4") + "         " + doglegResult.dataList[a].dataP[2].ToString("F4") + "        "
                 //    + baseDogleg.ToString("F4") + "          " + baseDogleg1.ToString("F4") + "       " + baseDogleg2.ToString("F4"));
-                outputWriter.WriteLine(doglegResult.dataList[a].depth.ToString("F4") + "        " + doglegResult.dataList[a].dataP[1].ToString("F4") + "         " + doglegResult.dataList[a].dataP[2].ToString("F4") + "        "
-                                    + baseDogleg.ToString("F4") + "          " + baseDogleg1.ToString("F4") + "       " + baseDogleg2.ToString("F4"));
+				outputWriter.WriteLine(String.Format("{0,20} {1,16} {2,16} {3,16} {4,16} {5,16}", 
+														doglegResult.dataList[a].depth.ToString("F4"), 
+														doglegResult.dataList[a].dataP[1].ToString("F4"), 
+														doglegResult.dataList[a].dataP[2].ToString("F4"), 
+														baseDogleg.ToString("F4"), 
+														baseDogleg1.ToString("F4"),
+														baseDogleg2.ToString("F4")));
 
 
                 b += 25.0f;
@@ -3096,6 +3107,15 @@ namespace SharpGLProgram
             }
         }
 
+		private void clearDgInputs()
+		{
+			DgDepth.Text = "";
+			DogLegAns.Text = "";
+			MgDec.Text = "";
+			textBox1.Text = "";
+			textBox2.Text = "";
+		}
+
         private void Pause_Click(object sender, RoutedEventArgs e)
         {
             handlePauseResume();
@@ -3140,6 +3160,11 @@ namespace SharpGLProgram
             }
             return isOutside;
         }
+
+		private void MgDecGoto_Click(object sender, KeyboardFocusChangedEventArgs e)
+		{
+			MgDecGoto_Click(sender, (RoutedEventArgs) e);
+		}
 
     }
   

@@ -30,7 +30,7 @@ namespace SharpGLProgram
         {
 			if (dataList.Count() < 2) return 0; // just return zero if there is only 2 values 
 
-			/* // Calvin's version
+			// Calvin's version
 			// this is the interval 
 			double interval = dataList[1].depth - dataList[0].depth;
 
@@ -75,16 +75,16 @@ namespace SharpGLProgram
 			} while (searchfurther == true); 
 			
 			return indexLocate;
-			*/
+			
 
-			// Binary search
+			/*// Binary search
 			int lowerDepthIndex = dataList[0].depth < dataList[dataList.Count() - 1].depth ? 0 : dataList.Count()-1;
 			int upperDepthIndex = lowerDepthIndex == 0 ? dataList.Count()-1 : 0;
-			return binaryFindIndex(cDepth, lowerDepthIndex, upperDepthIndex);
+			return binaryFindIndex(cDepth, lowerDepthIndex, upperDepthIndex);*/
              
         }
 
-		// find the index in dataList that contains the exact depth value; or the nearest depth value
+		/*// find the index in dataList that contains the exact depth value; or the nearest depth value
 		// assume input indices are positive, in order, and within dataList.Count()
 		public int binaryFindIndex(double value, int lowIndex, int highIndex)
 		{
@@ -114,7 +114,7 @@ namespace SharpGLProgram
 					return a;
 			}
 		}
-
+		*/
 
                 
          // if the depth value is increasing, upwards is true. vice versa. 

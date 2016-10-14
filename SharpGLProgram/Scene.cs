@@ -580,10 +580,10 @@ namespace SharpGLProgram
 			applyColorTransformation(gl, new vec3(1.0f, 1.0f, 1.0f), 0.6f);
 			int tempCount;
 			gl.Begin(OpenGL.GL_TRIANGLE_STRIP);
-			for (int a = 0; a < tunnelCurve.dataList.Count()-1; a++)
+			for (int a = 0; a < tunnelCurve.dataList.Count()-5; a+=5)
 			{
 				tempCount = tunnelCurve.dataList[a].dataP.Count() / 3;
-				base2 = a + 1;
+				base2 = a + 5;
 				for (int b = 0; b < tempCount; b++)
 				{
 					base1 = b * 3;

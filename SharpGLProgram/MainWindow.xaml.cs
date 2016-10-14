@@ -262,7 +262,7 @@ namespace SharpGLProgram
 
             double topSize = 1, baseSize = 3, step = 7, height = step * baseSize;
 
-            scene.applyColorTransformation(gl, new vec3(0.5f, 0.5f, 0), 0.7f);
+            /*scene.applyColorTransformation(gl, new vec3(0.5f, 0.5f, 0), 0.7f);
             gl.Begin(OpenGL.GL_TRIANGLES);
             gl.Vertex(-baseSize - 5, -baseSize - 5, top);   //gl.Vertex(-XBoxCoord, -YBoxCoord, top);   //gl.Vertex(-baseSize, -baseSize, top);
             gl.Vertex(baseSize + 5, -baseSize - 5, top);    //gl.Vertex(XBoxCoord, -YBoxCoord, top);    //gl.Vertex(baseSize, -baseSize, top);
@@ -270,13 +270,8 @@ namespace SharpGLProgram
             gl.Vertex(-baseSize - 5, -baseSize - 5, top);   //gl.Vertex(-XBoxCoord, -YBoxCoord, top);   //gl.Vertex(-baseSize, -baseSize, top);
             gl.Vertex(baseSize + 5, baseSize + 5, top);     //gl.Vertex(XBoxCoord, YBoxCoord, top);     //gl.Vertex(baseSize, baseSize, top);
             gl.Vertex(-baseSize - 5, baseSize + 5, top);    //gl.Vertex(-XBoxCoord, YBoxCoord, top);    //gl.Vertex(-baseSize, baseSize, top);
-            gl.End();
+            gl.End();*/
 
-            scene.applyColorTransformation(gl, new vec3(1, 1, 0));
-            gl.Begin(OpenGL.GL_LINES);
-            gl.Vertex(0, 0, bottom);
-            gl.Vertex(0, 0, top);
-            gl.End();
             /*gl.Begin(OpenGL.GL_TRIANGLE_FAN);
             gl.Vertex(0, 0, top + 5);
             double step = Math.PI / 6;
@@ -285,6 +280,8 @@ namespace SharpGLProgram
                 gl.Vertex(5 * Math.Cos(i), 5 * Math.Sin(i), top);
             gl.Vertex(5, 0, top);
             gl.End();*/
+			
+			scene.applyColorTransformation(gl, new vec3(1, 1, 0));
 
             gl.Begin(OpenGL.GL_TRIANGLES);
             gl.Vertex(-topSize, -topSize, top + height);
@@ -332,6 +329,11 @@ namespace SharpGLProgram
                 upperSize -= stepSize;
                 curHeight = newHeight;
             }
+
+			gl.Begin(OpenGL.GL_LINES);
+			gl.Vertex(0, 0, bottom);
+			gl.Vertex(0, 0, curHeight);
+			gl.End();
         }
 
         void drawMarkings(OpenGL gl)

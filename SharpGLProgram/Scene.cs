@@ -554,7 +554,7 @@ namespace SharpGLProgram
         // the user might wait up to 2-3 mins for the textures to come in, so we are rendering the curves first. 
         public void drawUntexturedTunnel(OpenGL gl, CurveDataMgt tunnelCurve)
         {
-			gl.Disable(OpenGL.GL_DEPTH_TEST);
+			//gl.Disable(OpenGL.GL_DEPTH_TEST);
             // apply a color of bright grey
             applyColorTransformation(gl, new vec3(0.8f, 0.8f, 0.8f), 0.6f);
 
@@ -596,7 +596,7 @@ namespace SharpGLProgram
 			}
 			gl.End();
 
-			gl.Enable(OpenGL.GL_DEPTH_TEST);
+			//gl.Enable(OpenGL.GL_DEPTH_TEST);
         }
 
 

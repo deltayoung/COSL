@@ -608,12 +608,6 @@ namespace SharpGLProgram
 
             scene.applyStartLines(gl, 1); // +ve means start drawing lines 
 
-            // untextured tunnel for streaming option 
-            if (StreamFlag == 1)
-            {
-                scene.drawUntexturedTunnel(gl, tunnelPhysicalDataHolder);
-            }
-
             // z- axis
             scene.applyColorTransformation(gl, new vec3(0, 0, 1));
             gl.Begin(OpenGL.GL_LINES);
@@ -663,6 +657,12 @@ namespace SharpGLProgram
 
             // interval marking
             drawMarkings(gl);
+
+			// Note: Untextured tunnel is drawn semi-transparent, so it has to be drawn last after all opaque objects to produce a correct depth test 
+			// (otherwise, transparency will still hide the derrick line unless depth test is disabled, 
+			// but disabling depth test will make untextured tunnel floats in front of opaque objects from every viewpoint, which is inaccurate)
+			if (StreamFlag == 1)
+				scene.drawUntexturedTunnel(gl, tunnelPhysicalDataHolder); // untextured tunnel for streaming option 
 
 			// draw compass
 			drawCompass(gl);

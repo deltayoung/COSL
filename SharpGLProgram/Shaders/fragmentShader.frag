@@ -55,7 +55,6 @@ void main()
 				if ( indexColor > colorCountRange ) indexColor = colorCountRange; 
 			}
 
-			
 		    myColor = vec4( colorPosition[indexColor] , alpha);  // use any of them to select the colorPosition 
 
 
@@ -66,7 +65,7 @@ void main()
 			// end here 
 
 
-			//vec4 finalTexture = vec4( colorPosition[indexColor] , 1.0f); 
+			//vec4 finalTexture = vec4( colorPosition[indexColor] , alpha); 
 
 			//myColor =  finalTexture ; 
 

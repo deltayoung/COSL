@@ -3138,7 +3138,7 @@ namespace SharpGLProgram
         private void Interval_PreviewLostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
             System.Windows.Controls.TextBox tbox = sender as System.Windows.Controls.TextBox;
-            if (double.Parse(tbox.Text) < 1 || double.Parse(tbox.Text) > 1000)
+            if (tbox.Text == "" || double.Parse(tbox.Text) < 1 || double.Parse(tbox.Text) > 1000)
             {
                 e.Handled = true;
             }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
@@ -262,7 +262,7 @@ namespace SharpGLProgram
 
             double topSize = 1, baseSize = 3, step = 7, height = step * baseSize;
 
-            scene.applyColorTransformation(gl, new vec3(0.5f, 0.5f, 0));
+            scene.applyColorTransformation(gl, new vec3(0.5f, 0.5f, 0), 0.7f);
             gl.Begin(OpenGL.GL_TRIANGLES);
             gl.Vertex(-baseSize - 5, -baseSize - 5, top);   //gl.Vertex(-XBoxCoord, -YBoxCoord, top);   //gl.Vertex(-baseSize, -baseSize, top);
             gl.Vertex(baseSize + 5, -baseSize - 5, top);    //gl.Vertex(XBoxCoord, -YBoxCoord, top);    //gl.Vertex(baseSize, -baseSize, top);
@@ -434,7 +434,39 @@ namespace SharpGLProgram
             gl.End();
         }
 
-        void drawCompass(OpenGL gl, float radius)
+		void drawCompass(OpenGL gl)
+		{
+			int minRenderWidth = (500 - 200) / 2; // MainWindow.MinimumWidth - UIControl.FixedWidth
+			float compassScale = 1.5f, compassRadius = 1.0f, aspectRatio = 1.0f;
+			mat4 compassProjectionMatrix = glm.perspective(fov, aspectRatio, zNear, zFar),
+					compassViewingMatrix = glm.lookAt(new vec3(2.0f, 2.0f, 0.0f), new vec3(0, 0, 0), new vec3(0, 0, 1)),
+					compassTranslationMatrix = mat4.identity(),     //new mat4(new vec4(1,0,0,0), new vec4(0,1,0,0), new vec4(0,0,1,0), new vec4(25,0,-10,1)),
+					compassScalingMatrix = new mat4(new vec4(compassScale, 0, 0, 0), new vec4(0, compassScale, 0, 0), new vec4(0, 0, compassScale, 0), new vec4(0, 0, 0, 1)),
+					compassTransformMatrix = compassTranslationMatrix * compassRotationMatrix * compassScalingMatrix,
+					compassFullTransformMatrix = compassProjectionMatrix * compassViewingMatrix * compassTransformMatrix;
+
+			gl.Viewport(10, 5, minRenderWidth, minRenderWidth);
+
+			// Warning: beyond this point (gl.Disable(OpenGL.GL_DEPTH_TEST)), any 3D objects drawn after the compass will not have the same depth buffer with those objects drawn before the compass
+			// Consequence: Any objects (including compass) drawn between this point and the next point (gl.Enable(OpenGL.GL_DEPTH_TEST)) will always overlay the previous rendering, regardless of actual 3D depth
+			gl.Disable(OpenGL.GL_DEPTH_TEST);
+			scene.applyTransformation(gl, compassProjectionMatrix, compassTransformMatrix, compassFullTransformMatrix);
+			drawCompassObject(gl, compassRadius);
+
+			scene.unbinding(gl);
+
+			// text: mark N-S-W-E of compass
+			markDirection(gl, new vec3(0, compassRadius, 0), 0.1f * compassRadius, 'N', compassFullTransformMatrix);
+			markDirection(gl, new vec3(0, -compassRadius, 0), 0.1f * compassRadius, 'S', compassFullTransformMatrix);
+			markDirection(gl, new vec3(compassRadius, 0, 0), 0.1f * compassRadius, 'E', compassFullTransformMatrix);
+			markDirection(gl, new vec3(-compassRadius, 0, 0), 0.1f * compassRadius, 'W', compassFullTransformMatrix);
+
+			//restore viewport after drawing compass
+			gl.Viewport(0, 0, (int)openGLControl.ActualWidth, (int)openGLControl.ActualHeight);
+			gl.Enable(OpenGL.GL_DEPTH_TEST);
+		}
+					
+        void drawCompassObject(OpenGL gl, float radius)
         {
             /*//test
             scene.applyColorTransformation(gl, new vec3(0, 1, 0));
@@ -527,15 +559,12 @@ namespace SharpGLProgram
 
             //test if depthRender is out of screen, update the depthAnchor to move towards depthRender to adjust the screen view
             if (testPointOutsideScreen(gl, new vec3(0, 0, depthRender)))
-            {
-                depthAnchor = depthRender + 0.5f*(depthRender-depthAnchor);
-            }
-                
+                depthAnchor = depthRender + 0.5f*(depthRender-depthAnchor); 
 
             //viewingMatrix = glm.lookAt(new vec3(30, 30, depthStart), new vec3(0, 0, depthStart), new vec3(0, 0, 1));
             //viewingMatrix = glm.lookAt(new vec3(30, 30, depthRender), new vec3(0, 0, depthRender), new vec3(0, 0, 1));
+			//viewingMatrix = glm.lookAt(new vec3(0, 30, depthRender), new vec3(0, 0, depthRender), new vec3(0, 0, 1));
             viewingMatrix = glm.lookAt(new vec3(30, 30, depthAnchor), new vec3(0, 0, depthAnchor), new vec3(0, 0, 1));
-            //viewingMatrix = glm.lookAt(new vec3(0, 30, depthRender), new vec3(0, 0, depthRender), new vec3(0, 0, 1));
 
             mgTransformMatrix = glm.rotate(modelTransformMatrix, mgDecValue, new vec3(0.0f, 0.0f, 1.0f));
 
@@ -555,6 +584,12 @@ namespace SharpGLProgram
             gl.Enable(OpenGL.GL_POLYGON_OFFSET_FILL); 
             gl.PolygonOffset(1.0f, 5);
             //gl.LineWidth(0.1f); 
+
+			gl.Disable(OpenGL.GL_CULL_FACE);
+			//gl.Enable(OpenGL.GL_CULL_FACE);
+			//gl.CullFace(OpenGL.GL_FRONT);
+			gl.Enable(OpenGL.GL_BLEND);
+			gl.BlendFunc(OpenGL.GL_SRC_ALPHA, OpenGL.GL_ONE_MINUS_SRC_ALPHA);
 
             // send all the matrices to the shader code. 
             scene.binding(gl);
@@ -627,35 +662,8 @@ namespace SharpGLProgram
             // interval marking
             drawMarkings(gl);
 
-            int minRenderWidth = (500 - 200)/2; // MainWindow.MinimumWidth - UIControl.FixedWidth
-            float compassScale = 1.5f, compassRadius = 1.0f, aspectRatio = 1.0f;
-            mat4    compassProjectionMatrix = glm.perspective(fov, aspectRatio, zNear, zFar),
-                    compassViewingMatrix = glm.lookAt(new vec3(2.0f,2.0f,0.0f), new vec3(0,0,0), new vec3(0,0,1)),
-                    compassTranslationMatrix = mat4.identity(),     //new mat4(new vec4(1,0,0,0), new vec4(0,1,0,0), new vec4(0,0,1,0), new vec4(25,0,-10,1)),
-                    compassScalingMatrix = new mat4(new vec4(compassScale,0,0,0), new vec4(0,compassScale,0,0), new vec4(0,0,compassScale,0), new vec4(0,0,0,1)),
-                    compassTransformMatrix = compassTranslationMatrix * compassRotationMatrix * compassScalingMatrix,
-                    compassFullTransformMatrix = compassProjectionMatrix * compassViewingMatrix * compassTransformMatrix;
-            
-            gl.Viewport(10, 5, minRenderWidth, minRenderWidth);
-                
-            gl.Disable(OpenGL.GL_DEPTH_TEST);
-            scene.applyTransformation(gl, compassProjectionMatrix, compassTransformMatrix, compassFullTransformMatrix);
-            drawCompass(gl, compassRadius);
-
-            // Warning: beyond this point, any 3D objects drawn after the compass will not have the same depth buffer with those objects drawn before the compass
-            // Consequence: Any objects (including compass) drawn beyond this point will always overlay the previous rendering, regardless of actual 3D depth
-
-            scene.unbinding(gl);
-
-            // text: mark N-S-W-E of compass
-            markDirection(gl, new vec3(0, compassRadius, 0), 0.1f * compassRadius, 'N', compassFullTransformMatrix);
-            markDirection(gl, new vec3(0, -compassRadius, 0), 0.1f * compassRadius, 'S', compassFullTransformMatrix);
-            markDirection(gl, new vec3(compassRadius, 0, 0), 0.1f * compassRadius, 'E', compassFullTransformMatrix);
-            markDirection(gl, new vec3(-compassRadius, 0, 0), 0.1f * compassRadius, 'W', compassFullTransformMatrix);
-
-            //restore viewport after drawing compass
-            gl.Viewport(0, 0, (int)openGLControl.ActualWidth, (int)openGLControl.ActualHeight);
-            gl.Enable(OpenGL.GL_DEPTH_TEST);
+			// draw compass
+			drawCompass(gl);
 
             // text: depth intervals
             writeTextAtLocation(gl, new vec3(-XBoxCoord, -YBoxCoord, depthRender), ((m_eLoggingMode == LoggingMode.Time ? 1.0f : -1.0f) * depthRender).ToString(), 1, 1, 0, 15.0f);
@@ -2907,7 +2915,7 @@ namespace SharpGLProgram
                 //doglegWriter.WriteLine(doglegResult.dataList[a].depth.ToString("F4") + "        " + doglegResult.dataList[a].dataP[1].ToString("F4") + "         " + doglegResult.dataList[a].dataP[2].ToString("F4") + "        "
                 //    + baseDogleg.ToString("F4") + "          " + baseDogleg1.ToString("F4") + "       " + baseDogleg2.ToString("F4"));
 				outputWriter.WriteLine(String.Format("{0,20} {1,16} {2,16} {3,16} {4,16} {5,16}", 
-														doglegResult.dataList[a].depth.ToString("F4"), 
+														Math.Abs(doglegResult.dataList[a].depth).ToString("F4"), 
 														doglegResult.dataList[a].dataP[1].ToString("F4"), 
 														doglegResult.dataList[a].dataP[2].ToString("F4"), 
 														baseDogleg.ToString("F4"), 

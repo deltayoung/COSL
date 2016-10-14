@@ -554,40 +554,49 @@ namespace SharpGLProgram
         // the user might wait up to 2-3 mins for the textures to come in, so we are rendering the curves first. 
         public void drawUntexturedTunnel(OpenGL gl, CurveDataMgt tunnelCurve)
         {
-            // apply a color of bright grey 
-            applyColorTransformation(gl, new vec3(0.8f, 0.8f, 0.8f));
-
+			gl.Disable(OpenGL.GL_DEPTH_TEST);
+            // apply a color of bright grey
+            applyColorTransformation(gl, new vec3(0.8f, 0.8f, 0.8f), 0.6f);
 
             int base1, base2; 
 
             gl.Begin(OpenGL.GL_LINES);
-
-
             for (int a = 0; a < tunnelCurve.dataList.Count(); a = a+5)
             {
-
                 for (int b = 0; b < tunnelCurve.dataList[a].dataP.Count() / 3 ; b++)
                 {
                     int c = (b + 1) % (tunnelCurve.dataList[a].dataP.Count() / 3);
-
 
                     base1 = b * 3;
                     base2 = c * 3;
                     
                     gl.Vertex(tunnelCurve.dataList[a].dataP[base1], tunnelCurve.dataList[a].dataP[base1 + 1], tunnelCurve.dataList[a].dataP[base1 + 2]);
                     gl.Vertex(tunnelCurve.dataList[a].dataP[base2], tunnelCurve.dataList[a].dataP[base2 + 1], tunnelCurve.dataList[a].dataP[base2 + 2]);
-
                 }
-
             }
-            
-            
             gl.End();
 
+			// apply semi-transparent grey color for in-betweens
+			applyColorTransformation(gl, new vec3(1.0f, 1.0f, 1.0f), 0.6f);
+			int tempCount;
+			gl.Begin(OpenGL.GL_TRIANGLE_STRIP);
+			for (int a = 0; a < tunnelCurve.dataList.Count()-1; a++)
+			{
+				tempCount = tunnelCurve.dataList[a].dataP.Count() / 3;
+				base2 = a + 1;
+				for (int b = 0; b < tempCount; b++)
+				{
+					base1 = b * 3;
 
+					gl.Vertex(tunnelCurve.dataList[a].dataP[base1], tunnelCurve.dataList[a].dataP[base1 + 1], tunnelCurve.dataList[a].dataP[base1 + 2]);
+					gl.Vertex(tunnelCurve.dataList[base2].dataP[base1], tunnelCurve.dataList[base2].dataP[base1 + 1], tunnelCurve.dataList[base2].dataP[base1 + 2]);
+				}
+				gl.Vertex(tunnelCurve.dataList[a].dataP[0], tunnelCurve.dataList[a].dataP[1], tunnelCurve.dataList[a].dataP[2]);
+				gl.Vertex(tunnelCurve.dataList[base2].dataP[0], tunnelCurve.dataList[base2].dataP[1], tunnelCurve.dataList[base2].dataP[2]);
+			}
+			gl.End();
 
-
-
+			gl.Enable(OpenGL.GL_DEPTH_TEST);
         }
 
 
@@ -608,10 +617,10 @@ namespace SharpGLProgram
             shaderID.SetUniformMatrix4(gl, "fullTransformaMatrix", fullTransform.to_array());
         }
 
-        public void applyColorTransformation(OpenGL gl, vec3 setNewColor)
+        public void applyColorTransformation(OpenGL gl, vec3 setNewColor, float alpha=1.0f)
         {
-            shaderID.SetUniform3(gl, "setColor", setNewColor.x, setNewColor.y, setNewColor.z); 
-
+            shaderID.SetUniform3(gl, "setColor", setNewColor.x, setNewColor.y, setNewColor.z);
+			shaderID.SetUniform1(gl, "alpha", alpha);
         }
 
         public void applyStartLines(OpenGL gl, float startDraw)

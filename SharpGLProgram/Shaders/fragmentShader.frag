@@ -14,6 +14,7 @@ uniform vec3 eyePosition;
 uniform float depthIndex ; 
 uniform float drawingLines; // +ve means draw lines, -ve means stop drawing lines
 uniform vec3 setColor; 
+uniform float alpha; 
 
 out vec4 myColor;
 
@@ -28,12 +29,12 @@ uniform float highCutoff;
 void main()
 {
 	if ( drawingLines > 0 ) 
-		myColor = vec4(setColor,1); 
+		myColor = vec4(setColor,alpha); 
 	else 
 	{
 		if (( sliceValue >= depthIndex) && ( sliceValue < depthIndex+1))
 		{
-			myColor = vec4(1,1,0,1); 
+			myColor = vec4(1,1,0,alpha); 
 		}
 		else
 		{
@@ -55,7 +56,7 @@ void main()
 			}
 
 			
-		    myColor = vec4( colorPosition[indexColor] , 1.0f);  // use any of them to select the colorPosition 
+		    myColor = vec4( colorPosition[indexColor] , alpha);  // use any of them to select the colorPosition 
 
 
 
@@ -76,20 +77,20 @@ void main()
 
 		//	vec3 diffuseIntensity = normalize(diffuseLight - thePosition);   
 		//	float brightness = dot(diffuseIntensity, theNormal) ;  // if you just want the black and white color intensity
-		//	vec4 diffuseColor =  vec4(brightness,brightness,brightness, 1.0);  // diffuse colors 
+		//	vec4 diffuseColor =  vec4(brightness,brightness,brightness, alpha);  // diffuse colors 
 
 			// specular light computation 
 		//	vec3 reflectedLight = reflect(-diffuseIntensity, theNormal); 
 		//	vec3 eyeVectorWorld = normalize(eyePosition - thePosition); 
 		//   float specularity = clamp(dot(reflectedLight , eyeVectorWorld),0,1); 
 	//		specularity = pow(specularity,500); 
-		//	vec4 specularLight = vec4(specularity,specularity, 0 , 1.0); 
+		//	vec4 specularLight = vec4(specularity,specularity, 0 , alpha); 
 
 			// the reason why we clamp is because the diffuseColor has negative values due to the dot product. Even after adding ab
 		//myColor = ((clamp(diffuseColor,0,1) * 0.5f  + clamp(specularLight,0,1) * 0.5f)  + ambientLight ) * myColor   ;
 
 
-		//	myColor = clamp(diffuseColor,0,1) * 0.5f  + clamp(specularLight,0,1) * 0.2f + vec4(ambientLight,1.0f)  ;
+		//	myColor = clamp(diffuseColor,0,1) * 0.5f  + clamp(specularLight,0,1) * 0.2f + vec4(ambientLight,alpha)  ;
 			
 		//	myColor = myColor * finalTexture ; 
 

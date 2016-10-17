@@ -152,8 +152,8 @@ namespace SharpGLProgram
             projectionMatrix = mat4.identity();
             compassRotationMatrix = mat4.identity();
 
-            objWriter = new System.IO.StreamWriter(@"debug.txt"); // used as a means to write deugging data on the screen 
-            doglegWriter = new System.IO.StreamWriter(@"dogleg.txt"); // used as a means to write deugging data on the screen 
+            objWriter = new System.IO.StreamWriter(@"debug.txt"); // used as a means to write debugging data on the screen 
+            doglegWriter = new System.IO.StreamWriter(@"dogleg.txt"); // used as a means to write debugging data on the screen 
 
             // shift the modelview backwards 
             modelTransformMatrix = glm.translate(modelTransformMatrix, new vec3(0, 0, 0));
@@ -520,13 +520,18 @@ namespace SharpGLProgram
             // send all the matrices to the current picking shader code. 
             picking.applyTransformation(gl, ftm);
 
-            // rendering the tunnel. This rendering is not displayed, but only rendered to the created framebuffer and onto the texure.  
+            // rendering the tunnel. This rendering is not displayed, but only rendered to the created framebuffer and onto the texture.  
             scene.Render(gl, translationalVector); // render the tunnel  
 
             // can change to any other method, as long as the mouse position is provided
 
-            pick_Depth_f = picking.pickPixel(gl, (int)(picking_Mouse_Loc.X - 200), (int)(openGLControl.ActualHeight - picking_Mouse_Loc.Y - 1), ref click_depth);
+			const int controlPanelWidth = 200;	// if the UI control panel width changes, need to change this value
+            pick_Depth_f = picking.pickPixel(gl, (int)(picking_Mouse_Loc.X - controlPanelWidth), (int)(openGLControl.ActualHeight - picking_Mouse_Loc.Y - 1), ref click_depth);
             pick_Depth = (int)pick_Depth_f;
+
+			objWriter.WriteLine("picking_Mouse_Loc=" + picking_Mouse_Loc.X.ToString() + ", " + picking_Mouse_Loc.Y.ToString());
+			objWriter.WriteLine("pick_Depth=" + pick_Depth);
+			objWriter.Flush();
 
             picking.unbinding(gl);
             
@@ -578,20 +583,14 @@ namespace SharpGLProgram
             // picking operation. Can control whether to activate this or not 
             if (pickingFlag == 1)
                 Picking_Operation(gl, fullT);
-
-            // Clear the color and depth buffer.
+            
+			// Clear the color and depth buffer.
             gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT);
             //gl.Enable(OpenGL.GL_LINE_SMOOTH);
             gl.Enable(OpenGL.GL_POLYGON_SMOOTH); 
             gl.Enable(OpenGL.GL_POLYGON_OFFSET_FILL); 
             gl.PolygonOffset(1.0f, 5);
             //gl.LineWidth(0.1f); 
-
-			gl.Disable(OpenGL.GL_CULL_FACE);
-			//gl.Enable(OpenGL.GL_CULL_FACE);
-			//gl.CullFace(OpenGL.GL_FRONT);
-			gl.Enable(OpenGL.GL_BLEND);
-			gl.BlendFunc(OpenGL.GL_SRC_ALPHA, OpenGL.GL_ONE_MINUS_SRC_ALPHA);
 
             // send all the matrices to the shader code. 
             scene.binding(gl);
@@ -805,20 +804,20 @@ namespace SharpGLProgram
         {
             Point p = e.GetPosition(null);
                 
-            if (startdraw == 1 && pickingFlag != 1)
-            {
-                is_Left_Button_Pressed = true;  // set to true 
-                prev_Mouse_Loc = p;
-                rotationPoint = computeRotationPoint(depthRender,depthStart);
-            }
-
             if (pickingFlag == 1)
             {
                 double pickedDepth = doglegResult.dataList[pick_Depth].depth;
                 if (m_eLoggingMode != LoggingMode.Time) pickedDepth = -pickedDepth;
-                DgDepth.Text = pickedDepth.ToString("f2"); 
+                //DgDepth.Text = pickedDepth.ToString("f2");
+				DgDepth.Text = pickedDepth.ToString(); 
                 pickingFlag = 0;
             }
+			else if (startdraw == 1)
+			{
+				is_Left_Button_Pressed = true;  // set to true 
+				prev_Mouse_Loc = p;
+				rotationPoint = computeRotationPoint(depthRender, depthStart);
+			}
          }
 
         private void openGLControl_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -1319,7 +1318,7 @@ namespace SharpGLProgram
                 if (m_eLoggingDir == LoggingDir.Down)
                 {
 
-                    objWriter.WriteLine("[Depth Mode] logging direction is up");
+                    //objWriter.WriteLine("[Depth Mode] logging direction is up");
                     tunnelPhysicalDataHolder.setOrientation(false);
                     curveBHIOPData.setOrientation(false);
                     tunnelPhysicalData.setOrientation(false);
@@ -1330,7 +1329,7 @@ namespace SharpGLProgram
                 }
                 else
                 {
-                    objWriter.WriteLine("[Depth Mode] logging direction is down");
+                    //objWriter.WriteLine("[Depth Mode] logging direction is down");
                     tunnelPhysicalDataHolder.setOrientation(true);
                     curveBHIOPData.setOrientation(true);
                     tunnelPhysicalData.setOrientation(true);
@@ -1342,7 +1341,7 @@ namespace SharpGLProgram
             }
             else // logging mode: Time
             {
-                objWriter.WriteLine("[Time Mode] logging direction is down");
+                //objWriter.WriteLine("[Time Mode] logging direction is down");
                 tunnelPhysicalDataHolder.setOrientation(true);
                 curveBHIOPData.setOrientation(true);
                 tunnelPhysicalData.setOrientation(true);
@@ -1358,7 +1357,7 @@ namespace SharpGLProgram
 
 
 
-            objWriter.Flush(); 
+            //objWriter.Flush(); 
 
 
 
@@ -1512,7 +1511,7 @@ namespace SharpGLProgram
                                         objWriter.Flush(); */ 
 
 
-                                        writeDebug = true;
+                                        //writeDebug = true;
 
                                         double[] tempPoints = new double[NumPoints];
 
@@ -2945,8 +2944,8 @@ namespace SharpGLProgram
 
             mgDecValue = (float) mgvRadian ; 
 
-            objWriter.WriteLine("lost focus = " + mgvRadian);
-            objWriter.Flush(); 
+            //objWriter.WriteLine("lost focus = " + mgvRadian);
+            //objWriter.Flush(); 
         }
 
 

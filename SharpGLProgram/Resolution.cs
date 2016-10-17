@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -126,7 +126,7 @@ namespace SharpGLProgram
         public void RenderTexture(OpenGL gl, ShaderProgram sp, ref uint[] texNameID)
         {
             // no need to call these 2 functions because these are default ... 
-          gl.ActiveTexture(OpenGL.GL_TEXTURE0);
+			gl.ActiveTexture(OpenGL.GL_TEXTURE0);
             gl.Uniform1(sp.GetUniformLocation(gl, "gSampler"), 0); 
            
 

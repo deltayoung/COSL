@@ -18,7 +18,7 @@ uniform float alpha;
 
 out vec4 myColor;
 
-uniform sampler2D gSampler; // this should be the texure map 
+uniform sampler2D gSampler; // this should be the texture map 
 
 uniform vec3 colorPosition[256]; // this is the color choice from user 
 uniform int colorCountRange; 

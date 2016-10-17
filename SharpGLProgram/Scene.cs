@@ -158,7 +158,7 @@ namespace SharpGLProgram
 
             // these variables are used for the generation of streaming texture maps. 
             streamTextureIndex = 0;
-           streamTextureRowCounter = 0; 
+			streamTextureRowCounter = 0;		
 
 
 
@@ -554,6 +554,12 @@ namespace SharpGLProgram
         // the user might wait up to 2-3 mins for the textures to come in, so we are rendering the curves first. 
         public void drawUntexturedTunnel(OpenGL gl, CurveDataMgt tunnelCurve)
         {
+			gl.Disable(OpenGL.GL_CULL_FACE);
+			//gl.Enable(OpenGL.GL_CULL_FACE);
+			//gl.CullFace(OpenGL.GL_FRONT);
+			gl.Enable(OpenGL.GL_BLEND);
+			gl.BlendFunc(OpenGL.GL_SRC_ALPHA, OpenGL.GL_ONE_MINUS_SRC_ALPHA);
+
 			//gl.Disable(OpenGL.GL_DEPTH_TEST);
             // apply a color of bright grey
             applyColorTransformation(gl, new vec3(0.8f, 0.8f, 0.8f), 0.6f);
@@ -575,15 +581,15 @@ namespace SharpGLProgram
                 }
             }
             gl.End();
-
+			
 			// apply semi-transparent grey color for in-betweens
 			applyColorTransformation(gl, new vec3(1.0f, 1.0f, 1.0f), 0.6f);
 			int tempCount;
 			gl.Begin(OpenGL.GL_TRIANGLE_STRIP);
-			for (int a = 0; a < tunnelCurve.dataList.Count()-5; a+=5)
+			for (int a = 0; a < tunnelCurve.dataList.Count()-1; a++)
 			{
 				tempCount = tunnelCurve.dataList[a].dataP.Count() / 3;
-				base2 = a + 5;
+				base2 = a+1;
 				for (int b = 0; b < tempCount; b++)
 				{
 					base1 = b * 3;
@@ -597,6 +603,9 @@ namespace SharpGLProgram
 			gl.End();
 
 			//gl.Enable(OpenGL.GL_DEPTH_TEST);
+
+			//gl.Enable(OpenGL.GL_CULL_FACE);
+			gl.Disable(OpenGL.GL_BLEND);
         }
 
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,10 +16,13 @@ namespace SharpGLProgram
     class Picking
     {
 
-        OpenGL glContainer; 
+        OpenGL glContainer;
+		System.IO.StreamWriter objWriter;
 
         public void Initialize(OpenGL gl)
         {
+			objWriter = new System.IO.StreamWriter(@"picking_debug.txt");
+
             glContainer = gl; 
             //  We're going to specify the attribute locations for the position and normal, 
             //  so that we can force both shaders to explicitly have the same locations.
@@ -56,7 +59,8 @@ namespace SharpGLProgram
 
         public void close()
         {
-            shaderID.Delete(glContainer); 
+            shaderID.Delete(glContainer);
+			objWriter.Close();
         }
 
         
@@ -147,8 +151,12 @@ namespace SharpGLProgram
             float myFloat1 = System.BitConverter.ToSingle(pixelInfo, 0); 
             float myFloat2 = System.BitConverter.ToSingle(pixelInfo, 4);
             float myFloat3 = System.BitConverter.ToSingle(pixelInfo, 8);
-            float myFloat4 = System.BitConverter.ToSingle(pixelInfo, 12);
-            
+			float myFloat4 = System.BitConverter.ToSingle(pixelInfo, 12);
+
+			objWriter.WriteLine("x=" + x + ", y=" + y);
+			objWriter.WriteLine("pixelInfo=" + myFloat1 + ", " + myFloat2 + ", " + myFloat3 + ", " + myFloat4);
+			objWriter.Flush();
+
             gl.ReadBuffer(OpenGL.GL_NONE);
             gl.BindFramebufferEXT(OpenGL.GL_FRAMEBUFFER_EXT, 0);
 

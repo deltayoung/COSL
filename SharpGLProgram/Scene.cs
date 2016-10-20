@@ -210,10 +210,10 @@ namespace SharpGLProgram
             textureCOLS = 1;
 
             textureImage = new byte[textureROWS * textureCOLS * 4]; // create a space for a new texture image  
-            textureImage[0] = System.Convert.ToByte(128);
-            textureImage[1] = System.Convert.ToByte(128);
-            textureImage[2] = System.Convert.ToByte(128);
-            textureImage[3] = System.Convert.ToByte(128);
+            textureImage[0] = System.Convert.ToByte(255);	//128
+            textureImage[1] = System.Convert.ToByte(255);
+            textureImage[2] = System.Convert.ToByte(255);
+            textureImage[3] = System.Convert.ToByte(255);
 
             // generate textures 
             texNameID = new uint[1];
@@ -554,14 +554,12 @@ namespace SharpGLProgram
         // the user might wait up to 2-3 mins for the textures to come in, so we are rendering the curves first. 
         public void drawUntexturedTunnel(OpenGL gl, CurveDataMgt tunnelCurve)
         {
-			gl.Disable(OpenGL.GL_CULL_FACE);
-			//gl.Enable(OpenGL.GL_CULL_FACE);
-			//gl.CullFace(OpenGL.GL_FRONT);
-			gl.Enable(OpenGL.GL_BLEND);
-			gl.BlendFunc(OpenGL.GL_SRC_ALPHA, OpenGL.GL_ONE_MINUS_SRC_ALPHA);
+			//gl.Disable(OpenGL.GL_CULL_FACE);
+			//gl.Enable(OpenGL.GL_BLEND);
+			//gl.BlendFunc(OpenGL.GL_SRC_ALPHA, OpenGL.GL_ONE_MINUS_SRC_ALPHA);
 
 			//gl.Disable(OpenGL.GL_DEPTH_TEST);
-            // apply a color of bright grey
+            // apply a bright grey color for contour lines
             applyColorTransformation(gl, new vec3(0.8f, 0.8f, 0.8f), 0.6f);
 
             int base1, base2; 
@@ -582,7 +580,7 @@ namespace SharpGLProgram
             }
             gl.End();
 			
-			// apply semi-transparent grey color for in-betweens
+			// apply white color for in-between contours
 			applyColorTransformation(gl, new vec3(1.0f, 1.0f, 1.0f), 0.6f);
 			int tempCount;
 			gl.Begin(OpenGL.GL_TRIANGLE_STRIP);
@@ -604,8 +602,7 @@ namespace SharpGLProgram
 
 			//gl.Enable(OpenGL.GL_DEPTH_TEST);
 
-			//gl.Enable(OpenGL.GL_CULL_FACE);
-			gl.Disable(OpenGL.GL_BLEND);
+			//gl.Disable(OpenGL.GL_BLEND);
         }
 
 

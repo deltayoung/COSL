@@ -262,7 +262,7 @@ namespace SharpGLProgram
 
             double topSize = 1, baseSize = 3, step = 7, height = step * baseSize;
 
-            /*scene.applyColorTransformation(gl, new vec3(0.5f, 0.5f, 0), 0.7f);
+            scene.applyColorTransformation(gl, new vec3(0.5f, 0.5f, 0), 0.7f);
             gl.Begin(OpenGL.GL_TRIANGLES);
             gl.Vertex(-baseSize - 5, -baseSize - 5, top);   //gl.Vertex(-XBoxCoord, -YBoxCoord, top);   //gl.Vertex(-baseSize, -baseSize, top);
             gl.Vertex(baseSize + 5, -baseSize - 5, top);    //gl.Vertex(XBoxCoord, -YBoxCoord, top);    //gl.Vertex(baseSize, -baseSize, top);
@@ -270,7 +270,7 @@ namespace SharpGLProgram
             gl.Vertex(-baseSize - 5, -baseSize - 5, top);   //gl.Vertex(-XBoxCoord, -YBoxCoord, top);   //gl.Vertex(-baseSize, -baseSize, top);
             gl.Vertex(baseSize + 5, baseSize + 5, top);     //gl.Vertex(XBoxCoord, YBoxCoord, top);     //gl.Vertex(baseSize, baseSize, top);
             gl.Vertex(-baseSize - 5, baseSize + 5, top);    //gl.Vertex(-XBoxCoord, YBoxCoord, top);    //gl.Vertex(-baseSize, baseSize, top);
-            gl.End();*/
+            gl.End();
 
             /*gl.Begin(OpenGL.GL_TRIANGLE_FAN);
             gl.Vertex(0, 0, top + 5);

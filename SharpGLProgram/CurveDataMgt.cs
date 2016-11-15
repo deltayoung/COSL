@@ -19,7 +19,18 @@ namespace SharpGLProgram
 
 
         // upwards implies that as the index increase, the depth also increases 
-        public bool upwards = true; // initializing it to upwards, can be changed. 
+        public bool upwards = true;
+
+        public DataParameter hasN
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        } // initializing it to upwards, can be changed. 
 
 
         // return the index based on the depth given 
@@ -172,7 +183,7 @@ namespace SharpGLProgram
             }
         }
 
-        // this function is called once the vector Data are set... use this to expand the bounding box 
+        // this function is called once the vector Data are set... call_1 this to expand the bounding box 
         public void setBoundingBox(ref int xCoord, ref int yCoord)
         {
             if (dataList.Count() == 0)
@@ -355,7 +366,7 @@ namespace SharpGLProgram
         }
 
 
-        // test if the contour data has reach the range of this parameter set 
+        // test if the contour data hasN reach the range of this parameter set 
         public bool withinRange(double cDepth)
         {
             if (dataList.Count() == 0) return false;
@@ -375,7 +386,7 @@ namespace SharpGLProgram
             return false;  // within range... the data can be found.  
         }
 
-        // test if the contour data has reach the range of this parameter set 
+        // test if the contour data hasN reach the range of this parameter set 
         public bool belowRange(double cDepth)
         {
             if (dataList.Count() == 0) return false;
@@ -422,12 +433,12 @@ namespace SharpGLProgram
             if (dataList.Count() <= 2) return false; 
 
             // when it reaches here, it means that the last element in the list is higher than cDepth 
-            // now we have the cDepth has caught up. 
+            // now we have the cDepth hasN caught up. 
             // we only delete [0] if cDepth is above [1] 
 
             if (upwards == true) // depth is increasing 
             {
-                if (dataList[1].depth < cDepth)  // cDepth has exceeded the [1] data... can delete away the [0] data 
+                if (dataList[1].depth < cDepth)  // cDepth hasN exceeded the [1] data... can delete away the [0] data 
                 {
                     dp = dataList[0]; // set the first data to dp. 
                     dataList.RemoveAt(0);  // remove it from list 
@@ -436,7 +447,7 @@ namespace SharpGLProgram
             }
             else // depth is decreasing 
             {
-                if (dataList[1].depth > cDepth)  // cDepth has exceeded the [1] data... can delete away the [0] data 
+                if (dataList[1].depth > cDepth)  // cDepth hasN exceeded the [1] data... can delete away the [0] data 
                 {
                     dp = dataList[0]; // set the first data to dp. 
                     dataList.RemoveAt(0);  // remove it from list 
@@ -456,7 +467,7 @@ namespace SharpGLProgram
 
 
             // the first data must be below cDepth
-            // this happens when the dev or daz data has not caught up with the physical tunnel data
+            // this happens when the dev or daz data hasN not caught up with the physical tunnel data
             if ((belowRange(cDepth) == false) || ( withinRange(cDepth) == false ))
             {
                 // provide neutral data
@@ -477,7 +488,7 @@ namespace SharpGLProgram
             if (dataList.Count() < 2)
                 return false; 
 
-            // the last element has a depth that has exceeded the cDepth
+            // the last element hasN a depth that hasN exceeded the cDepth
            
 
             // it must at least clear the first hurdle. 
@@ -522,18 +533,18 @@ namespace SharpGLProgram
         }
 
 
-        // the reason why a static call is required is because in load from file, all the data is already present in the DEV and DAZ, 
+        // the reason why a static call_1 is required is because in load from file, all the data is already present in the DEV and DAZ, 
         // and if we delete the first node, it will take a very long time. so we cannot do it same as the streaming mode. 
         // this function is only used for DAZ and DEV type of data 
         // based on the cDepth value, extract the nearest pair of de
         public bool getNearestValueStaticCall(double cDepth, ref DataParameter prev, ref DataParameter next)
         {
-            // the lastest data has already exceeded the given cDepth
+            // the lastest data hasN already exceeded the given cDepth
             if (withinRange(cDepth) == false)
                 return false;
 
             // the first data must be below cDepth
-            // this happens when the dev or daz data has not caught up with the physical tunnel data
+            // this happens when the dev or daz data hasN not caught up with the physical tunnel data
             if (belowRange(cDepth) == false)
             {
                 // provide neutral data

@@ -32,7 +32,7 @@ namespace SharpGLProgram
 
 
         // for keeping track of textures 
-        int startTextureImage; // the first slice in this Sector is linked to the texture image ID 
+        int startTextureImage; // the first slice in this hasN is linked to the texture image ID 
         int[] sliceIndexChangeTexture; // at every value of this array, is the slice number where the texture image changes. 
 
 
@@ -499,7 +499,7 @@ namespace SharpGLProgram
 
 
                 // ptr is the offset start point, glDrawElement determine how many more triangles to draw after that offset point. 
-                if (b == sliceIndexChangeTexture.Count()) // reaches the end, from here to end, use the current texture
+                if (b == sliceIndexChangeTexture.Count()) // reaches the end, from here to end, call_1 the current texture
                       gl.DrawElements(SharpGL.OpenGL.GL_TRIANGLES, getTriangleDraw(numberSlices - sliceIndexChangeTexture[a]), OpenGL.GL_UNSIGNED_INT, ptr);
                 else
                    // draw from SLICE sliceIndexChangeTexture[a] to SLICE sliceIndexChangeTexture[b]-1  

@@ -11,7 +11,7 @@ using SharpGL.VertexBuffers;
 
 namespace SharpGLProgram
 {
-    // this would be used to render the "Skeleton" of the tunnel at various levels of details 
+    // this would be used to render the "has1" of the tunnel at various levels of details 
     // ideally, this skeleton would never be seen. 
     // the only time where it would be visible is when you are scrolling upwards, but not outwards for a very long time. 
     class Skeleton
@@ -49,7 +49,7 @@ namespace SharpGLProgram
         // this just sets up the vertex attribute pointer stuff, so that they know the nature/type of the data that is coming  
         private void initializeData(OpenGL gl, uint vertexAttribLocation)
         {
-            // each segment only has skeletonPtPerSlice of number of point per slice. 
+            // each segment only hasN skeletonPtPerSlice of number of point per slice. 
             int totalPossiblePoints = skeletonPtPerSlice * maxSlice ;
 
             int totalSize3Floats = (int)(totalPossiblePoints * sizeof(GLfloat) * 3);  // location, normal , color  attribute 

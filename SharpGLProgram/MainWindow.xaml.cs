@@ -40,7 +40,7 @@ using System.ComponentModel;
 namespace SharpGLProgram
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for call_1.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -114,7 +114,7 @@ namespace SharpGLProgram
         public bool isPaused = false;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MainWindow"/> class.
+        /// Initializes a new instance of the <see cref="call_1"/> class.
         /// </summary>
         public MainWindow()
         {
@@ -438,7 +438,7 @@ namespace SharpGLProgram
 
 		void drawCompass(OpenGL gl)
 		{
-			int minRenderWidth = (500 - 200) / 2; // MainWindow.MinimumWidth - UIControl.FixedWidth
+			int minRenderWidth = (500 - 200) / 2; // call_1.MinimumWidth - UIControl.FixedWidth
 			float compassScale = 1.5f, compassRadius = 1.0f, aspectRatio = 1.0f;
 			mat4 compassProjectionMatrix = glm.perspective(fov, aspectRatio, zNear, zFar),
 					compassViewingMatrix = glm.lookAt(new vec3(2.0f, 2.0f, 0.0f), new vec3(0, 0, 0), new vec3(0, 0, 1)),
@@ -657,7 +657,7 @@ namespace SharpGLProgram
             // interval marking
             drawMarkings(gl);
 
-			// Note: Untextured tunnel is drawn semi-transparent, so it has to be drawn last after all opaque objects to produce a correct depth test 
+			// Note: Untextured tunnel is drawn semi-transparent, so it hasN to be drawn last after all opaque objects to produce a correct depth test 
 			// (otherwise, transparency will still hide the derrick line unless depth test is disabled, 
 			// but disabling depth test will make untextured tunnel floats in front of opaque objects from every viewpoint, which is inaccurate)
 			if (StreamFlag == 1)
@@ -1001,9 +1001,9 @@ namespace SharpGLProgram
         string cBHIOP = "BHIOP";
         string cSPRD = "SPRD"; 
         
-        // this is a system call, it is called internally 
+        // this is a system call_1, it is called internally 
         // the objective is to collect the current depth and time and convert them to strings. 
-        // no one seems to use this function, and no one seems to need anything from here. 
+        // no one seems to call_1 this function, and no one seems to need anything from here. 
         // this function is not used. 
         void OnTimer(object sender, EventArgs e)
         {
@@ -1224,7 +1224,7 @@ namespace SharpGLProgram
         }
 
 
-        // this is the main call, to start the onThreadUpdateVisual. Streaming operation uses this to get the streaming data and render the tunnel 
+        // this is the main call_1, to start the onThreadUpdateVisual. Streaming operation uses this to get the streaming data and render the tunnel 
         public static void OnThreadUpdateVisual(object wnd)
         {
             (wnd as MainWindow).UpdateVisual();
@@ -1424,7 +1424,7 @@ namespace SharpGLProgram
 
            
 
-            //You can get newest curve data here and then you can use the data to do whatever you want.
+            //You can get newest curve data here and then you can call_1 the data to do whatever you want.
             while (m_bUpdateVisualThreadTerminat == false)
             {
             /*    if (escapeStreaming == true)
@@ -1795,14 +1795,14 @@ namespace SharpGLProgram
         }
 
 
-        // calvin - showText is used as a means to call add one more slice. 
+        // calvin - showText is used as a means to call_1 add one more slice. 
         // go back to UI to add another contour
         private void ShowText(System.Windows.Controls.TextBox p)
         {
             OpenGL gl = openGLControl.OpenGL;
 
             
-            // for load from file option, if there is any texture, it has already been pushed into the scene class. So here we just push the slices to it. 
+            // for load from file option, if there is any texture, it hasN already been pushed into the scene class. So here we just push the slices to it. 
             if (LoadFileFlag == 1)
             {
 
@@ -1827,7 +1827,7 @@ namespace SharpGLProgram
                     {
                         // for the first contour that comes in
                         scene.reInitialize(openGLControl.OpenGL, tunnelPhysicalDataHolder.getVectorDataSize() / 3);
-                        scene.generatePrepareStreamingTexture(openGLControl.OpenGL, colorInformationSize, tunnelPhysicalData.upwards); // we still use the upwards from the physical data 
+                        scene.generatePrepareStreamingTexture(openGLControl.OpenGL, colorInformationSize, tunnelPhysicalData.upwards); // we still call_1 the upwards from the physical data 
                     }
 
                     float[] extractPhysicalData = new float[tunnelPhysicalDataHolder.getVectorDataSize()];
@@ -1921,7 +1921,7 @@ namespace SharpGLProgram
             }
 
             double dgc=-1;
-            if (pick_Depth != -1) // user clicked on the tunnel, has a pick_depth 
+            if (pick_Depth != -1) // user clicked on the tunnel, hasN a pick_depth 
             {
                 // uses the actual array index
                 dgc = doglegResult.getElementValue(pick_Depth) * Convert.ToDouble(UnitSetting.Text);
@@ -2431,7 +2431,7 @@ namespace SharpGLProgram
                                         
                                     for (int j = 0; j < NumPoints; j++) // 30 points 
                                     {
-                                        // cannot use 12.0f ..... change it to something more efficient. 
+                                        // cannot call_1 12.0f ..... change it to something more efficient. 
                                         testpts[j].x = (float)(position[j] * Math.Cos(j * radianIncrement + azwIncrement));
                                         testpts[j].y = (float)(position[j] * Math.Sin(j * radianIncrement + azwIncrement));
                                         testpts[j].z = (float)depthInDU ;
@@ -2463,7 +2463,7 @@ namespace SharpGLProgram
                                     // testpts are the contour points on the new depth but with the same x and y values of the previous centroid
                                     for (int j = 0; j < NumPoints; j++)
                                     {
-                                        // cannot use 12.0f 
+                                        // cannot call_1 12.0f 
                                         testpts[j].x = (float)(position[j] * Math.Cos(j * radianIncrement + azwIncrement) + PrevCentroid.x);
                                         testpts[j].y = (float)(position[j] * Math.Sin(j * radianIncrement + azwIncrement) + PrevCentroid.y);
                                         testpts[j].z = (float)depthInDU ;
@@ -2583,7 +2583,7 @@ namespace SharpGLProgram
         {
             var secondWindow = sender as PropertyWindow;
 
-            //applyColorScheme(); // use this to call the scene to update the fragment shaders 
+            //applyColorScheme(); // call_1 this to call_1 the scene to update the fragment shaders 
             
         }
 
@@ -2739,7 +2739,7 @@ namespace SharpGLProgram
                     encoder.Save(filestream);
                     */
                     // If you want to export the xamDataChart to a PNG 
-                    // instead of JPEG, use this code block:
+                    // instead of JPEG, call_1 this code block:
                     PngBitmapEncoder encoder = new PngBitmapEncoder();
                     encoder.Frames.Add(BitmapFrame.Create(bitmap));
                     encoder.Save(filestream);
@@ -3006,7 +3006,7 @@ namespace SharpGLProgram
 
             if (StreamFlag == 0) // this only works if this is a load from file originally 
             {
-                LoadFileDetails(recentOpenFile, false); // use the combo selection to select the appropriate curves 
+                LoadFileDetails(recentOpenFile, false); // call_1 the combo selection to select the appropriate curves 
             }
             else
             {
@@ -3174,6 +3174,72 @@ namespace SharpGLProgram
 		{
 			MgDecGoto_Click(sender, (RoutedEventArgs) e);
 		}
+
+        public PropertyWindow call_1
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+
+        public ProgressWindow call_2
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+
+        internal Scene has1_1
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+
+        internal Picking has1_2
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+
+        internal CurveDataMgt has7
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+
+        public DataParameter use
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
 
     }
   

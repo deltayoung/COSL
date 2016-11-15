@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SharpGLProgram.App">
+    <Position X="3" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpGLProgram.MainWindow">
+    <Position X="2.75" Y="9.25" Width="3" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Delegate Name="SharpGLProgram.MainWindow.ThreadUpdateVisual" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MainWindow.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="SharpGLProgram.MainWindow.ServiceEventResponsor" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MainWindow.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="SharpGLProgram.MainWindow.ServiceEventResponsor2" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MainWindow.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Enum Name="SharpGLProgram.MainWindow.DepthToDUCoeff" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MainWindow.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Delegate Name="SharpGLProgram.MainWindow.UpdateProgressBarDelegate" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MainWindow.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>InTIjv4Ecy03iJSf1pqnJ5kLBj78QEc7JQzW0FqBPyE=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpGLProgram.Picking">
+    <Position X="18" Y="3.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>IAAAAYAABIAAEQAAAACAAgAAAAAAACAAAICAIAgAAAA=</HashCode>
+      <FileName>Picking.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Object" Collapsed="true">
+    <Position X="15.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Windows.Window" Collapsed="true">
+    <Position X="5" Y="7.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Windows.Controls.ContentControl" Collapsed="true">
+    <Position X="5" Y="6.75" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Orientation="Left" Position="0.1" />
+  </Class>
+  <Class Name="System.Windows.Controls.Control" Collapsed="true">
+    <Position X="5" Y="5.75" Width="1.5" />
+    <InheritanceLine Type="System.Windows.FrameworkElement" FixedFromPoint="true">
+      <Path>
+        <Point X="5.75" Y="5.441" />
+        <Point X="5.75" Y="5.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Windows.FrameworkElement" Collapsed="true">
+    <Position X="4.75" Y="4.75" Width="1.75" />
+    <InheritanceLine Type="System.Windows.UIElement" FixedToPoint="true">
+      <Path>
+        <Point X="5.75" Y="4.441" />
+        <Point X="5.75" Y="4.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+    <Lollipop Orientation="Left" Position="0.1" />
+  </Class>
+  <Class Name="System.Windows.UIElement" Collapsed="true">
+    <Position X="5" Y="3.75" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Orientation="Left" Position="0.1" />
+  </Class>
+  <Class Name="System.Windows.Media.Visual" Collapsed="true">
+    <Position X="5" Y="2.75" Width="1.5" />
+    <InheritanceLine Type="System.Windows.DependencyObject" FixedFromPoint="true">
+      <Path>
+        <Point X="5.75" Y="2.441" />
+        <Point X="5.75" Y="2.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Windows.DependencyObject" Collapsed="true">
+    <Position X="4.75" Y="1.75" Width="1.75" />
+    <InheritanceLine Type="System.Windows.Threading.DispatcherObject" FixedToPoint="true">
+      <Path>
+        <Point X="4.75" Y="1.062" />
+        <Point X="4.75" Y="1.375" />
+        <Point X="5.75" Y="1.375" />
+        <Point X="5.75" Y="1.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Windows.Threading.DispatcherObject" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Windows.Application" Collapsed="true">
+    <Position X="3" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Orientation="Left" Position="0.1" />
+  </Class>
+  <Class Name="SharpGLProgram.ProgressWindow">
+    <Position X="9" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ProgressWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpGLProgram.PropertyWindow">
+    <Position X="6" Y="9.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AACABQACACQFAwAQBmAAYABAgBggAAAgAApIiGCAAAI=</HashCode>
+      <FileName>PropertyWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpGLProgram.Scene">
+    <Position X="10.75" Y="1.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AkYFCNEoBAGCEQBAyIKACigggAABUiAAQJAJMYELAAA=</HashCode>
+      <FileName>Scene.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpGLProgram.Skeleton">
+    <Position X="13.5" Y="9" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>gBAABAAAAAAAAAACACAAAIAAgBAAGAAAIAQEAAAAAAA=</HashCode>
+      <FileName>Skeleton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpGLProgram.Tunnel">
+    <Position X="13.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAABBAAggAAAAAECgAAgAIAAgBAAGIAgIAAEAAAAAAA=</HashCode>
+      <FileName>Tunnel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpGLProgram.Window1">
+    <Position X="0.5" Y="9.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQAACAAAAAAA=</HashCode>
+      <FileName>StartProperty.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpGLProgram.Sector">
+    <Position X="13.5" Y="13.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>kBAFBBAEgAEAAAESAIEoAIAAgBAACIAgohQEAAAAAAA=</HashCode>
+      <FileName>Sector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpGLProgram.Resolution">
+    <Position X="10.75" Y="13" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AgYECBAgBQAAAQAACEAAAAAAgEIGADAAAAAIEABCBAA=</HashCode>
+      <FileName>Resolution.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpGLProgram.Contour">
+    <Position X="13.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIQAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Contour.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpGLProgram.Dev">
+    <Position X="18.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAQAA=</HashCode>
+      <FileName>Contour.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpGLProgram.Daz">
+    <Position X="18.25" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Contour.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpGLProgram.BHIOP">
+    <Position X="18.25" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Contour.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpGLProgram.DataParameter">
+    <Position X="18.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Contour.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpGLProgram.CurveDataMgt">
+    <Position X="20" Y="9.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AEDYAAAACEACBAAAAggBEACAIAkQAAAAABIhgCAEhEA=</HashCode>
+      <FileName>CurveDataMgt.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpGLProgram.DataMatching">
+    <Position X="17.75" Y="8" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataMatching.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpGLProgram.ManifestResourceLoader">
+    <Position X="20" Y="1" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ManifestResourceLoader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpGLProgram.Properties.Resources">
+    <Position X="18" Y="1" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

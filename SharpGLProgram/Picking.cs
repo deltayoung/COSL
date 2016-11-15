@@ -12,7 +12,7 @@ using SharpGL.Shaders;
 
 namespace SharpGLProgram
 {
-    // this class implements the picking shaders that we use to insert details about the triangles that we draw, so that we are able to retrieve information from the framebuffer
+    // this class implements the picking shaders that we call_1 to insert details about the triangles that we draw, so that we are able to retrieve information from the framebuffer
     class Picking
     {
 
@@ -184,7 +184,7 @@ namespace SharpGLProgram
         }
 
 
-        //  The shaders we use.
+        //  The shaders we call_1.
         private ShaderProgram shaderID;
 
         private uint frameBufferID; // for the framebuffer 

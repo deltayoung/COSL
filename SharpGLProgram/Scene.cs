@@ -15,8 +15,8 @@ namespace SharpGLProgram
 {
 
     // this class performs the loading of the shaders, and manages the various different level of details renderings. 
-    // Another use of this class is to manage the centroid location at each depth location. 
-    // Yet another use of this class is to manage the texture mapping 
+    // Another call_1 of this class is to manage the centroid location at each depth location. 
+    // Yet another call_1 of this class is to manage the texture mapping 
     class Scene
     {
 
@@ -88,7 +88,7 @@ namespace SharpGLProgram
             shaderID.Bind(gl); // bind the shaders to the program. 
 
 
-            resolution = new Resolution[detailLayers]; // use 4 layers... 
+            resolution = new Resolution[detailLayers]; // call_1 4 layers... 
             for (int a = 0; a < detailLayers; a++)
                resolution[a] = new Resolution();
 
@@ -296,7 +296,7 @@ namespace SharpGLProgram
                 gl.TexParameterI(OpenGL.GL_TEXTURE_2D, OpenGL.GL_TEXTURE_WRAP_S, array);
                 gl.TexParameterI(OpenGL.GL_TEXTURE_2D, OpenGL.GL_TEXTURE_WRAP_T, array);
 
-                // only GL_NEAREST gives the pixellated effect that is required, the rest will smooth the data, cannot use. 
+                // only GL_NEAREST gives the pixellated effect that is required, the rest will smooth the data, cannot call_1. 
                 array[0] = OpenGL.GL_NEAREST;
                 gl.TexParameterI(OpenGL.GL_TEXTURE_2D, OpenGL.GL_TEXTURE_MAG_FILTER, array);
                 array[0] = OpenGL.GL_NEAREST;
@@ -408,7 +408,7 @@ namespace SharpGLProgram
             gl.TexParameterI(OpenGL.GL_TEXTURE_2D, OpenGL.GL_TEXTURE_WRAP_S, array);
             gl.TexParameterI(OpenGL.GL_TEXTURE_2D, OpenGL.GL_TEXTURE_WRAP_T, array);
 
-            // only GL_NEAREST gives the pixellated effect that is required, the rest will smooth the data, cannot use. 
+            // only GL_NEAREST gives the pixellated effect that is required, the rest will smooth the data, cannot call_1. 
             array[0] = OpenGL.GL_NEAREST;
             gl.TexParameterI(OpenGL.GL_TEXTURE_2D, OpenGL.GL_TEXTURE_MAG_FILTER, array);
              array[0] = OpenGL.GL_NEAREST;
@@ -422,12 +422,12 @@ namespace SharpGLProgram
         }
 
         // sets one line of texture information 
-        // this is where to change if the color dialog box has more information. 
+        // this is where to change if the color dialog box hasN more information. 
         private void setTextureInformation(ref double[] colorData, int currentTextureRow)
         {
             int baseValue = currentTextureRow * textureCOLS * 4;
 
-            // i am assuming that colorData has the same size as textureCOLS 
+            // i am assuming that colorData hasN the same size as textureCOLS 
             for (int i = 0; i < textureCOLS; i++)
             {
 
@@ -443,7 +443,7 @@ namespace SharpGLProgram
         }
 
 
-        // based on the current slice depth value, use this to determine what is the texure value. 
+        // based on the current slice depth value, call_1 this to determine what is the texure value. 
         private void computeTextureCoordinates(double currentDepthLevel, ref double textureCoords )
         {
 
@@ -497,7 +497,7 @@ namespace SharpGLProgram
             return; 
         }
 
-        // given a current Depth level, we can use this to compute the texture index, and the position of the texture value. 
+        // given a current Depth level, we can call_1 this to compute the texture index, and the position of the texture value. 
         public void createOneSlice(OpenGL gl, GLfloat[] ContourPositions, double currentDepthLevel)
         {
             double textureCoord = 0.0f ;
@@ -660,9 +660,20 @@ namespace SharpGLProgram
             shaderID.Unbind(gl);
         }
         
-        //  The shaders we use.
+        //  The shaders we call_1.
         private ShaderProgram shaderID;
-        private Resolution[] resolution; 
+        private Resolution[] resolution;
+
+        internal Resolution hasN
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        } 
       
     }
 }

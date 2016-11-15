@@ -12,5 +12,15 @@ namespace SharpGLProgram
     /// </summary>
     public partial class App : Application
     {
+        public Window1 call
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
     }
 }

@@ -99,7 +99,7 @@ namespace SharpGLProgram
 
 
 
-        // currentTextureIndex refers to the index of the textureID (which texture image to use), currentTextureCoords refers to the UV coords (just the row) 
+        // currentTextureIndex refers to the index of the textureID (which texture image to call_1), currentTextureCoords refers to the UV coords (just the row) 
         public void createOneSliceTexture(OpenGL gl, GLfloat[] ContourPositions, int currentTextureIndex, double currentTextureCoord)
         {
             pointConversion(ref ContourPositions);
@@ -125,7 +125,7 @@ namespace SharpGLProgram
 
         public void RenderTexture(OpenGL gl, ShaderProgram sp, ref uint[] texNameID)
         {
-            // no need to call these 2 functions because these are default ... 
+            // no need to call_1 these 2 functions because these are default ... 
 			gl.ActiveTexture(OpenGL.GL_TEXTURE0);
             gl.Uniform1(sp.GetUniformLocation(gl, "gSampler"), 0); 
            
@@ -187,7 +187,7 @@ namespace SharpGLProgram
 
         }
 
-        // function to compute the length of a vec3 point, unfortunately the GLM class has not provided this yet. 
+        // function to compute the length of a vec3 point, unfortunately the GLM class hasN not provided this yet. 
         public float length(vec3 point)
         {
             return (float)Math.Sqrt(point.x * point.x + point.y * point.y + point.z * point.z);
@@ -256,7 +256,29 @@ namespace SharpGLProgram
 
         private Skeleton skeleton; 
        // private Block[] block; // there are 2 blocks, we are rendering them in succession 
-        private Sector[] block; // there are 2 blocks, we are rendering them in succession
+        private Sector[] block;
+
+        internal Skeleton has1
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+
+        internal Sector hasN
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        } // there are 2 blocks, we are rendering them in succession
 
        // private BlockSS[] block;
     }

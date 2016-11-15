@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 namespace SharpGLProgram
 {
     /// <summary>
-    /// Interaction logic for ProgressWindow.xaml
+    /// Interaction logic for call_2.xaml
     /// </summary>
     public partial class ProgressWindow : Window
     {

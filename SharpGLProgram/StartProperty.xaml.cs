@@ -16,17 +16,28 @@ using System.ComponentModel;
 namespace SharpGLProgram
 {
     /// <summary>
-    /// Interaction logic for Window1.xaml
+    /// Interaction logic for call_1.xaml
     /// </summary>
     public partial class Window1 : Window
     {
-        //MainWindow LoadFile = new MainWindow();
+        //call_1 LoadFile = new call_1();
 
         public Window1()
         {
 
             InitializeComponent();
             
+        }
+
+        public MainWindow call
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
         }
 
         void secondWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)

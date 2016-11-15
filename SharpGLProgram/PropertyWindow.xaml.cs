@@ -16,7 +16,7 @@ using GlmNet;
 namespace SharpGLProgram
 {
     /// <summary>
-    /// Interaction logic for Window1.xaml
+    /// Interaction logic for call_1.xaml
     /// </summary>
     public partial class PropertyWindow : Window
     {
@@ -124,8 +124,8 @@ namespace SharpGLProgram
             Choices();  // read in all form inputs
 
             applyOkCancel("Apply");
-            // Transfer the color info to MainWindow color palette
-            //GetColorProperties(out MainWindow.colorPalette);
+            // Transfer the color info to call_1 color palette
+            //GetColorProperties(out call_1.colorPalette);
         }
 
         private void Ok_Click(object sender, RoutedEventArgs e)
@@ -135,7 +135,7 @@ namespace SharpGLProgram
 
             applyOkCancel("OK");
             // Transfer the color info to core program
-            //GetColorProperties(out MainWindow.colorPalette);
+            //GetColorProperties(out call_1.colorPalette);
             this.Close();
 
         }

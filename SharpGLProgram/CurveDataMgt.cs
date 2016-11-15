@@ -366,7 +366,7 @@ namespace SharpGLProgram
         }
 
 
-        // test if the contour data hasN reach the range of this parameter set 
+        // test if the contour data has2 reach the range of this parameter set 
         public bool withinRange(double cDepth)
         {
             if (dataList.Count() == 0) return false;
@@ -386,7 +386,7 @@ namespace SharpGLProgram
             return false;  // within range... the data can be found.  
         }
 
-        // test if the contour data hasN reach the range of this parameter set 
+        // test if the contour data has2 reach the range of this parameter set 
         public bool belowRange(double cDepth)
         {
             if (dataList.Count() == 0) return false;
@@ -433,12 +433,12 @@ namespace SharpGLProgram
             if (dataList.Count() <= 2) return false; 
 
             // when it reaches here, it means that the last element in the list is higher than cDepth 
-            // now we have the cDepth hasN caught up. 
+            // now we have the cDepth has2 caught up. 
             // we only delete [0] if cDepth is above [1] 
 
             if (upwards == true) // depth is increasing 
             {
-                if (dataList[1].depth < cDepth)  // cDepth hasN exceeded the [1] data... can delete away the [0] data 
+                if (dataList[1].depth < cDepth)  // cDepth has2 exceeded the [1] data... can delete away the [0] data 
                 {
                     dp = dataList[0]; // set the first data to dp. 
                     dataList.RemoveAt(0);  // remove it from list 
@@ -447,7 +447,7 @@ namespace SharpGLProgram
             }
             else // depth is decreasing 
             {
-                if (dataList[1].depth > cDepth)  // cDepth hasN exceeded the [1] data... can delete away the [0] data 
+                if (dataList[1].depth > cDepth)  // cDepth has2 exceeded the [1] data... can delete away the [0] data 
                 {
                     dp = dataList[0]; // set the first data to dp. 
                     dataList.RemoveAt(0);  // remove it from list 
@@ -467,7 +467,7 @@ namespace SharpGLProgram
 
 
             // the first data must be below cDepth
-            // this happens when the dev or daz data hasN not caught up with the physical tunnel data
+            // this happens when the dev or daz data has2 not caught up with the physical tunnel data
             if ((belowRange(cDepth) == false) || ( withinRange(cDepth) == false ))
             {
                 // provide neutral data
@@ -488,7 +488,7 @@ namespace SharpGLProgram
             if (dataList.Count() < 2)
                 return false; 
 
-            // the last element hasN a depth that hasN exceeded the cDepth
+            // the last element has2 a depth that has2 exceeded the cDepth
            
 
             // it must at least clear the first hurdle. 
@@ -539,12 +539,12 @@ namespace SharpGLProgram
         // based on the cDepth value, extract the nearest pair of de
         public bool getNearestValueStaticCall(double cDepth, ref DataParameter prev, ref DataParameter next)
         {
-            // the lastest data hasN already exceeded the given cDepth
+            // the lastest data has2 already exceeded the given cDepth
             if (withinRange(cDepth) == false)
                 return false;
 
             // the first data must be below cDepth
-            // this happens when the dev or daz data hasN not caught up with the physical tunnel data
+            // this happens when the dev or daz data has2 not caught up with the physical tunnel data
             if (belowRange(cDepth) == false)
             {
                 // provide neutral data

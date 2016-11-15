@@ -657,7 +657,7 @@ namespace SharpGLProgram
             // interval marking
             drawMarkings(gl);
 
-			// Note: Untextured tunnel is drawn semi-transparent, so it hasN to be drawn last after all opaque objects to produce a correct depth test 
+			// Note: Untextured tunnel is drawn semi-transparent, so it has2 to be drawn last after all opaque objects to produce a correct depth test 
 			// (otherwise, transparency will still hide the derrick line unless depth test is disabled, 
 			// but disabling depth test will make untextured tunnel floats in front of opaque objects from every viewpoint, which is inaccurate)
 			if (StreamFlag == 1)
@@ -1802,7 +1802,7 @@ namespace SharpGLProgram
             OpenGL gl = openGLControl.OpenGL;
 
             
-            // for load from file option, if there is any texture, it hasN already been pushed into the scene class. So here we just push the slices to it. 
+            // for load from file option, if there is any texture, it has2 already been pushed into the scene class. So here we just push the slices to it. 
             if (LoadFileFlag == 1)
             {
 
@@ -1921,7 +1921,7 @@ namespace SharpGLProgram
             }
 
             double dgc=-1;
-            if (pick_Depth != -1) // user clicked on the tunnel, hasN a pick_depth 
+            if (pick_Depth != -1) // user clicked on the tunnel, has2 a pick_depth 
             {
                 // uses the actual array index
                 dgc = doglegResult.getElementValue(pick_Depth) * Convert.ToDouble(UnitSetting.Text);

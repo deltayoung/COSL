@@ -422,12 +422,12 @@ namespace SharpGLProgram
         }
 
         // sets one line of texture information 
-        // this is where to change if the color dialog box hasN more information. 
+        // this is where to change if the color dialog box has2 more information. 
         private void setTextureInformation(ref double[] colorData, int currentTextureRow)
         {
             int baseValue = currentTextureRow * textureCOLS * 4;
 
-            // i am assuming that colorData hasN the same size as textureCOLS 
+            // i am assuming that colorData has2 the same size as textureCOLS 
             for (int i = 0; i < textureCOLS; i++)
             {
 

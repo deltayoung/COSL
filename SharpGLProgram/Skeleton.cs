@@ -49,7 +49,7 @@ namespace SharpGLProgram
         // this just sets up the vertex attribute pointer stuff, so that they know the nature/type of the data that is coming  
         private void initializeData(OpenGL gl, uint vertexAttribLocation)
         {
-            // each segment only hasN skeletonPtPerSlice of number of point per slice. 
+            // each segment only has2 skeletonPtPerSlice of number of point per slice. 
             int totalPossiblePoints = skeletonPtPerSlice * maxSlice ;
 
             int totalSize3Floats = (int)(totalPossiblePoints * sizeof(GLfloat) * 3);  // location, normal , color  attribute 

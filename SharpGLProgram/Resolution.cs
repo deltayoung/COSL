@@ -187,7 +187,7 @@ namespace SharpGLProgram
 
         }
 
-        // function to compute the length of a vec3 point, unfortunately the GLM class hasN not provided this yet. 
+        // function to compute the length of a vec3 point, unfortunately the GLM class has2 not provided this yet. 
         public float length(vec3 point)
         {
             return (float)Math.Sqrt(point.x * point.x + point.y * point.y + point.z * point.z);
@@ -269,7 +269,7 @@ namespace SharpGLProgram
             }
         }
 
-        internal Sector hasN
+        internal Sector has2
         {
             get
             {

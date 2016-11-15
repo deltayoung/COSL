@@ -32,7 +32,7 @@ namespace SharpGLProgram
 
 
         // for keeping track of textures 
-        int startTextureImage; // the first slice in this hasN is linked to the texture image ID 
+        int startTextureImage; // the first slice in this has2 is linked to the texture image ID 
         int[] sliceIndexChangeTexture; // at every value of this array, is the slice number where the texture image changes. 
 
 

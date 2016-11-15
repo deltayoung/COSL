@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="SharpGLProgram.App" Collapsed="true">
-    <Position X="3" Y="2.75" Width="1.5" />
+    <Position X="3.25" Y="2.75" Width="1.5" />
     <AssociationLine Name="call" Type="SharpGLProgram.Window1" FixedToPoint="true">
       <Path>
-        <Point X="3.75" Y="3.441" />
-        <Point X="3.75" Y="4.25" />
+        <Point X="4" Y="3.441" />
+        <Point X="4" Y="4.25" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
@@ -21,78 +21,53 @@
     <Compartments>
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
-    <NestedTypes>
-      <Delegate Name="SharpGLProgram.MainWindow.ThreadUpdateVisual" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>MainWindow.xaml.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Delegate>
-      <Delegate Name="SharpGLProgram.MainWindow.ServiceEventResponsor" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>MainWindow.xaml.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Delegate>
-      <Delegate Name="SharpGLProgram.MainWindow.ServiceEventResponsor2" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>MainWindow.xaml.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Delegate>
-      <Enum Name="SharpGLProgram.MainWindow.DepthToDUCoeff" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>MainWindow.xaml.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Enum>
-      <Delegate Name="SharpGLProgram.MainWindow.UpdateProgressBarDelegate" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>MainWindow.xaml.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Delegate>
-    </NestedTypes>
+    <AssociationLine Name="call_1" Type="SharpGLProgram.PropertyWindow" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6.812" Y="4.25" />
+        <Point X="6.812" Y="4" />
+        <Point X="8.25" Y="4" />
+      </Path>
+    </AssociationLine>
     <AssociationLine Name="call_2" Type="SharpGLProgram.ProgressWindow" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="6.938" Y="4.941" />
-        <Point X="6.938" Y="5.295" />
-        <Point X="11.5" Y="5.295" />
-        <Point X="11.5" Y="4.941" />
+        <Point X="6.812" Y="4.941" />
+        <Point X="6.812" Y="5.25" />
+        <Point X="8.25" Y="5.25" />
       </Path>
     </AssociationLine>
     <AssociationLine Name="has1_1" Type="SharpGLProgram.Scene" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="6.5" Y="4.941" />
-        <Point X="6.5" Y="5.649" />
-        <Point X="3.104" Y="5.649" />
-        <Point X="3.104" Y="7.5" />
-        <Point X="4.25" Y="7.5" />
+        <Point X="6.5" Y="5.882" />
+        <Point X="4.375" Y="5.882" />
+        <Point X="4.375" Y="6.5" />
       </Path>
     </AssociationLine>
     <AssociationLine Name="has1_2" Type="SharpGLProgram.Picking" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="6.5" Y="4.941" />
         <Point X="6.5" Y="5.899" />
-        <Point X="9.25" Y="5.899" />
-        <Point X="9.25" Y="8.312" />
-        <Point X="9" Y="8.312" />
+        <Point X="11.177" Y="5.899" />
+        <Point X="11.177" Y="6.5" />
       </Path>
     </AssociationLine>
     <AssociationLine Name="has7" Type="SharpGLProgram.CurveDataMgt" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="6.5" Y="4.941" />
-        <Point X="6.5" Y="5.733" />
-        <Point X="10.408" Y="5.733" />
-        <Point X="10.408" Y="9.125" />
-        <Point X="9" Y="9.125" />
+        <Point X="6.5" Y="5.833" />
+        <Point X="6.5" Y="5.833" />
+        <Point X="6.5" Y="6.5" />
       </Path>
       <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.093" Y="0.01" />
+        <Position X="0.01" Y="0.093" />
       </MemberNameLabel>
     </AssociationLine>
-    <AssociationLine Name="use" Type="SharpGLProgram.DataParameter" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+    <AssociationLine Name="use" Type="SharpGLProgram.DataParameter" ManuallyRouted="true" FixedFromPoint="true">
       <Path>
         <Point X="6.5" Y="4.941" />
-        <Point X="6.5" Y="5.57" />
-        <Point X="11.588" Y="5.57" />
-        <Point X="11.588" Y="10.438" />
-        <Point X="9" Y="10.438" />
+        <Point X="6.5" Y="5.904" />
+        <Point X="9" Y="5.904" />
+        <Point X="9" Y="6.5" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
@@ -109,100 +84,32 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="SharpGLProgram.Picking" Collapsed="true">
-    <Position X="7.5" Y="8" Width="1.5" />
-    <InheritanceLine Type="System.Object" FixedToPoint="true">
-      <Path>
-        <Point X="6.5" Y="6.812" />
-        <Point X="6.5" Y="8.25" />
-        <Point X="7.5" Y="8.25" />
-      </Path>
-    </InheritanceLine>
+    <Position X="10.5" Y="6.5" Width="1.25" />
     <TypeIdentifier>
       <HashCode>IAAAAYAABIAAEQAAAACAAgAAAAAAACAAAICAIAgAAAA=</HashCode>
       <FileName>Picking.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="System.Object" Collapsed="true">
-    <Position X="5.75" Y="6.25" Width="1.5" />
-    <TypeIdentifier />
-  </Class>
-  <Class Name="System.Windows.Window" Collapsed="true">
-    <Position X="7" Y="2.75" Width="1.5" />
-    <TypeIdentifier />
-  </Class>
-  <Class Name="System.Windows.Controls.ContentControl" Collapsed="true">
-    <Position X="9" Y="2.75" Width="1.5" />
-    <TypeIdentifier />
-    <Lollipop Orientation="Bottom" Position="0.337" />
-  </Class>
-  <Class Name="System.Windows.Controls.Control" Collapsed="true">
-    <Position X="11" Y="2.75" Width="1.5" />
-    <TypeIdentifier />
-  </Class>
-  <Class Name="System.Windows.FrameworkElement" Collapsed="true">
-    <Position X="11" Y="1.75" Width="1.75" />
-    <TypeIdentifier />
-    <Lollipop Position="0.285" />
-  </Class>
-  <Class Name="System.Windows.UIElement" Collapsed="true">
-    <Position X="9" Y="1.75" Width="1.5" />
-    <TypeIdentifier />
-    <Lollipop Position="0.33" />
-  </Class>
-  <Class Name="System.Windows.Media.Visual" Collapsed="true">
-    <Position X="7" Y="1.75" Width="1.5" />
-    <TypeIdentifier />
-  </Class>
-  <Class Name="System.Windows.DependencyObject" Collapsed="true">
-    <Position X="4.75" Y="1.75" Width="1.75" />
-    <TypeIdentifier />
-  </Class>
-  <Class Name="System.Windows.Threading.DispatcherObject" Collapsed="true">
-    <Position X="4" Y="0.5" Width="1.5" />
-    <TypeIdentifier />
-  </Class>
-  <Class Name="System.Windows.Application" Collapsed="true">
-    <Position X="3" Y="1.75" Width="1.5" />
-    <TypeIdentifier />
-    <Lollipop Orientation="Left" Position="0.1" />
-  </Class>
   <Class Name="SharpGLProgram.ProgressWindow" Collapsed="true">
-    <Position X="10.75" Y="4.25" Width="1.5" />
-    <InheritanceLine Type="System.Windows.Window" FixedToPoint="true">
-      <Path>
-        <Point X="7.75" Y="3.441" />
-        <Point X="7.75" Y="3.875" />
-        <Point X="11.5" Y="3.875" />
-        <Point X="11.5" Y="4.25" />
-      </Path>
-    </InheritanceLine>
+    <Position X="8.25" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ProgressWindow.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SharpGLProgram.PropertyWindow" Collapsed="true">
-    <Position X="8.25" Y="4.25" Width="1.5" />
+    <Position X="8.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACABQACACQFAwAQBmAAYABAgBggAAAgAApIiGCAAAI=</HashCode>
       <FileName>PropertyWindow.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SharpGLProgram.Scene" Collapsed="true">
-    <Position X="4.25" Y="7.25" Width="1.25" />
-    <InheritanceLine Type="System.Object" FixedToPoint="true">
+    <Position X="3.75" Y="6.5" Width="1.25" />
+    <AssociationLine Name="hasN" Type="SharpGLProgram.Resolution" FixedToPoint="true">
       <Path>
-        <Point X="6.5" Y="6.812" />
-        <Point X="6.5" Y="7.5" />
-        <Point X="5.5" Y="7.5" />
-      </Path>
-    </InheritanceLine>
-    <AssociationLine Name="hasN" Type="SharpGLProgram.Resolution" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="4.25" Y="7.687" />
-        <Point X="3.875" Y="7.687" />
-        <Point X="3.875" Y="8.625" />
-        <Point X="4.25" Y="8.625" />
+        <Point X="4.375" Y="7.062" />
+        <Point X="4.375" Y="7.75" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
@@ -214,14 +121,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="SharpGLProgram.Skeleton" Collapsed="true">
-    <Position X="4.25" Y="9.75" Width="1.25" />
-    <InheritanceLine Type="System.Object" FixedToPoint="true">
-      <Path>
-        <Point X="6.5" Y="6.812" />
-        <Point X="6.5" Y="10.062" />
-        <Point X="5.5" Y="10.062" />
-      </Path>
-    </InheritanceLine>
+    <Position X="6" Y="8.25" Width="1.25" />
     <TypeIdentifier>
       <HashCode>gBAABAAAAAAAAAACACAAAIAAgBAAGAAAIAQEAAAAAAA=</HashCode>
       <FileName>Skeleton.cs</FileName>
@@ -229,14 +129,6 @@
   </Class>
   <Class Name="SharpGLProgram.Window1" Collapsed="true">
     <Position X="3.25" Y="4.25" Width="1.5" />
-    <InheritanceLine Type="System.Windows.Window" FixedToPoint="true">
-      <Path>
-        <Point X="7.75" Y="3.441" />
-        <Point X="7.75" Y="3.875" />
-        <Point X="4.375" Y="3.875" />
-        <Point X="4.375" Y="4.25" />
-      </Path>
-    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAABAQAACAAAAAAA=</HashCode>
       <FileName>StartProperty.xaml.cs</FileName>
@@ -246,82 +138,52 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="SharpGLProgram.Sector" Collapsed="true">
-    <Position X="4.25" Y="11" Width="1.25" />
-    <InheritanceLine Type="System.Object" FixedToPoint="true">
-      <Path>
-        <Point X="6.5" Y="6.812" />
-        <Point X="6.5" Y="11.25" />
-        <Point X="5.5" Y="11.25" />
-      </Path>
-    </InheritanceLine>
+    <Position X="6" Y="7.5" Width="1.25" />
     <TypeIdentifier>
       <HashCode>kBAFBBAEgAEAAAESAIEoAIAAgBAACIAgohQEAAAAAAA=</HashCode>
       <FileName>Sector.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SharpGLProgram.Resolution" Collapsed="true">
-    <Position X="4.25" Y="8.5" Width="1.25" />
-    <InheritanceLine Type="System.Object" FixedToPoint="true">
+    <Position X="3.75" Y="7.75" Width="1.25" />
+    <AssociationLine Name="has1" Type="SharpGLProgram.Skeleton" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="6.5" Y="6.812" />
-        <Point X="6.5" Y="8.812" />
-        <Point X="5.5" Y="8.812" />
-      </Path>
-    </InheritanceLine>
-    <AssociationLine Name="has1" Type="SharpGLProgram.Skeleton" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="4.25" Y="8.937" />
-        <Point X="3.875" Y="8.937" />
-        <Point X="3.875" Y="10.062" />
-        <Point X="4.25" Y="10.062" />
+        <Point X="5" Y="8.062" />
+        <Point X="5.454" Y="8.062" />
+        <Point X="5.454" Y="8.5" />
+        <Point X="6" Y="8.5" />
       </Path>
     </AssociationLine>
-    <AssociationLine Name="hasN" Type="SharpGLProgram.Sector" FixedFromPoint="true" FixedToPoint="true">
+    <AssociationLine Name="has2" Type="SharpGLProgram.Sector" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="4.25" Y="8.937" />
-        <Point X="3.875" Y="8.937" />
-        <Point X="3.875" Y="11.312" />
-        <Point X="4.25" Y="11.312" />
+        <Point X="5" Y="8.062" />
+        <Point X="5.454" Y="8.062" />
+        <Point X="5.454" Y="7.75" />
+        <Point X="6" Y="7.75" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AgYECBAgBQAAAQAACECAAAAAgEIGADEAAAAIEABCBAA=</HashCode>
+      <HashCode>AgYECBAgBQAAAQAACEAAAAAAgEIGADkAAAAIEABCBAA=</HashCode>
       <FileName>Resolution.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="has1" />
-      <Property Name="hasN" />
+      <Property Name="has2" />
     </ShowAsAssociation>
   </Class>
   <Class Name="SharpGLProgram.DataParameter" Collapsed="true">
-    <Position X="7.5" Y="10" Width="1.5" />
-    <InheritanceLine Type="System.Object" FixedToPoint="true">
-      <Path>
-        <Point X="6.5" Y="6.812" />
-        <Point X="6.5" Y="10.312" />
-        <Point X="7.5" Y="10.312" />
-      </Path>
-    </InheritanceLine>
+    <Position X="8.25" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAIAAAAAA=</HashCode>
       <FileName>Contour.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SharpGLProgram.CurveDataMgt" Collapsed="true">
-    <Position X="7.5" Y="9" Width="1.5" />
-    <InheritanceLine Type="System.Object" FixedToPoint="true">
+    <Position X="5.75" Y="6.5" Width="1.5" />
+    <AssociationLine Name="hasN" Type="SharpGLProgram.DataParameter" FixedFromPoint="true">
       <Path>
-        <Point X="6.5" Y="6.812" />
-        <Point X="6.5" Y="9.312" />
-        <Point X="7.5" Y="9.312" />
-      </Path>
-    </InheritanceLine>
-    <AssociationLine Name="hasN" Type="SharpGLProgram.DataParameter" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="9" Y="9.437" />
-        <Point X="9.375" Y="9.437" />
-        <Point X="9.375" Y="10.125" />
-        <Point X="9" Y="10.125" />
+        <Point X="7.25" Y="6.75" />
+        <Point X="8.25" Y="6.75" />
       </Path>
       <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
         <Position X="0.06" Y="0.11" Height="0.182" Width="0.72" />
@@ -334,13 +196,6 @@
     <ShowAsAssociation>
       <Property Name="hasN" />
     </ShowAsAssociation>
-  </Class>
-  <Class Name="SharpGLProgram.ManifestResourceLoader" Collapsed="true">
-    <Position X="7" Y="7" Width="2" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ManifestResourceLoader.cs</FileName>
-    </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

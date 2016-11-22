@@ -58,7 +58,7 @@ namespace SharpGLProgram
         System.IO.StreamWriter objWriter;
         System.IO.StreamWriter doglegWriter;
 
-        
+        bool hiddenDarkColorTheme;
         bool is_Left_Button_Pressed, is_Right_Button_Pressed, is_Middle_Button_Pressed;
         Point prev_Mouse_Loc, diff_Mouse_Loc, cur_Mouse_Loc, init_Mouse_Loc, picking_Mouse_Loc;
 
@@ -162,7 +162,8 @@ namespace SharpGLProgram
 
             pick_Depth = -1;
             pick_Depth_f = -1.0f;
-      
+
+            hiddenDarkColorTheme = false;
         }
 
         // given the top and bottom of the tunnel so far, compute the point of rotation. 
@@ -262,7 +263,10 @@ namespace SharpGLProgram
 
             double topSize = 1, baseSize = 3, step = 7, height = step * baseSize;
 
-            scene.applyColorTransformation(gl, new vec3(0.5f, 0.5f, 0), 0.7f);
+            if (hiddenDarkColorTheme)
+                scene.applyColorTransformation(gl, new vec3(0.5f, 0.5f, 0), 0.7f);
+            else
+                scene.applyColorTransformation(gl, new vec3(0, 0.7f, 0.7f), 0.7f);
             gl.Begin(OpenGL.GL_TRIANGLES);
             gl.Vertex(-baseSize - 5, -baseSize - 5, top);   //gl.Vertex(-XBoxCoord, -YBoxCoord, top);   //gl.Vertex(-baseSize, -baseSize, top);
             gl.Vertex(baseSize + 5, -baseSize - 5, top);    //gl.Vertex(XBoxCoord, -YBoxCoord, top);    //gl.Vertex(baseSize, -baseSize, top);
@@ -281,7 +285,10 @@ namespace SharpGLProgram
             gl.Vertex(5, 0, top);
             gl.End();*/
 			
-			scene.applyColorTransformation(gl, new vec3(1, 1, 0));
+			if (hiddenDarkColorTheme)
+                scene.applyColorTransformation(gl, new vec3(1, 1, 0));
+            else
+                scene.applyColorTransformation(gl, new vec3(0, 0.9f, 0.9f));
 
             gl.Begin(OpenGL.GL_TRIANGLES);
             gl.Vertex(-topSize, -topSize, top + height);
@@ -415,7 +422,10 @@ namespace SharpGLProgram
 
                 gl.DrawText3D("Times New Roman", textSize, 0f, 0.2f, "");
                 // draw depth on the z axis
-                gl.DrawText((int)onScreen.x, (int)onScreen.y, 1, 1, 1, "Courier New", textSize, direction.ToString());
+                if (hiddenDarkColorTheme)
+                    gl.DrawText((int)onScreen.x, (int)onScreen.y, 1, 1, 1, "Courier New", textSize, direction.ToString());
+                else
+                    gl.DrawText((int)onScreen.x, (int)onScreen.y, 0, 0, 0, "Courier New", textSize, direction.ToString());
             }
         }
 
@@ -428,7 +438,10 @@ namespace SharpGLProgram
             gl.Vertex(0.1 * radius, 0, 0);
             gl.End();
 
-            scene.applyColorTransformation(gl, new vec3(1, 1, 1));  // south pointer - white
+            if (hiddenDarkColorTheme)
+                scene.applyColorTransformation(gl, new vec3(1, 1, 1));  // south pointer - white
+            else
+                scene.applyColorTransformation(gl, new vec3(0.9f, 0.9f, 0.9f));  // south pointer - gray white
             gl.Begin(OpenGL.GL_TRIANGLES);
             gl.Vertex(0, -radius, 0);
             gl.Vertex(0.1 * radius, 0, 0);
@@ -585,6 +598,11 @@ namespace SharpGLProgram
                 Picking_Operation(gl, fullT);
             
 			// Clear the color and depth buffer.
+            //  Set the clear color.
+            if (hiddenDarkColorTheme)
+                gl.ClearColor(0, 0, 0, 0);  // black background
+            else
+                gl.ClearColor(1, 1, 1, 1); // white background
             gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT);
             //gl.Enable(OpenGL.GL_LINE_SMOOTH);
             gl.Enable(OpenGL.GL_POLYGON_SMOOTH); 
@@ -629,7 +647,10 @@ namespace SharpGLProgram
             gl.End();
 
             // bounding box
-            scene.applyColorTransformation(gl, new vec3(1, 1, 1));
+            if (hiddenDarkColorTheme)
+                scene.applyColorTransformation(gl, new vec3(1, 1, 1));
+            else
+                scene.applyColorTransformation(gl, new vec3(0.7f, 0.7f, 0.7f));
             gl.Begin(OpenGL.GL_LINES);
             gl.Vertex(-XBoxCoord, -YBoxCoord, depthStart);
             gl.Vertex(XBoxCoord, -YBoxCoord, depthStart);
@@ -667,26 +688,41 @@ namespace SharpGLProgram
 			drawCompass(gl);
 
             // text: depth intervals
-            writeTextAtLocation(gl, new vec3(-XBoxCoord, -YBoxCoord, depthRender), ((m_eLoggingMode == LoggingMode.Time ? 1.0f : -1.0f) * depthRender).ToString(), 1, 1, 0, 15.0f);
+            if (hiddenDarkColorTheme)
+                writeTextAtLocation(gl, new vec3(-XBoxCoord, -YBoxCoord, depthRender), ((m_eLoggingMode == LoggingMode.Time ? 1.0f : -1.0f) * depthRender).ToString(), 1, 1, 0, 15.0f); 
+            else
+                writeTextAtLocation(gl, new vec3(-XBoxCoord, -YBoxCoord, depthRender), ((m_eLoggingMode == LoggingMode.Time ? 1.0f : -1.0f) * depthRender).ToString(), 0.0f, 0.0f, 0.0f, 15.0f);
             int interval = m_eLoggingMode == LoggingMode.Time ? timeInterval : depthInterval;
             int effInterval = depthRender < depthStart ? -interval : interval;
             int depthWrite = (int)(depthRender - depthStart) / effInterval;
             //while(i < depthWrite)
             for(int i=1;i<=depthWrite;i++)
             {
-                writeTextAtLocation(gl, new vec3(-XBoxCoord, -YBoxCoord, (depthStart + i * effInterval)), ((m_eLoggingMode == LoggingMode.Time ? 1.0f : -1.0f) * (depthStart + i * effInterval)).ToString(), 1, 1, 1, 10.0f);
+                if (hiddenDarkColorTheme)
+                    writeTextAtLocation(gl, new vec3(-XBoxCoord, -YBoxCoord, (depthStart + i * effInterval)), ((m_eLoggingMode == LoggingMode.Time ? 1.0f : -1.0f) * (depthStart + i * effInterval)).ToString(), 1, 1, 1, 10.0f);
+                else
+                    writeTextAtLocation(gl, new vec3(-XBoxCoord, -YBoxCoord, (depthStart + i * effInterval)), ((m_eLoggingMode == LoggingMode.Time ? 1.0f : -1.0f) * (depthStart + i * effInterval)).ToString(), 0.6f, 0.6f, 0.6f, 10.0f);
             }
-            writeTextAtLocation(gl, new vec3(-XBoxCoord, -YBoxCoord, depthStart), ((m_eLoggingMode == LoggingMode.Time ? 1.0f : -1.0f) * depthStart).ToString(), 1, 1, 1, 10.0f);
+            if (hiddenDarkColorTheme)
+                writeTextAtLocation(gl, new vec3(-XBoxCoord, -YBoxCoord, depthStart), ((m_eLoggingMode == LoggingMode.Time ? 1.0f : -1.0f) * depthStart).ToString(), 1, 1, 1, 10.0f);
+            else
+                writeTextAtLocation(gl, new vec3(-XBoxCoord, -YBoxCoord, depthStart), ((m_eLoggingMode == LoggingMode.Time ? 1.0f : -1.0f) * depthStart).ToString(), 0.6f, 0.6f, 0.6f, 10.0f);
 
             // text: X & Y intervals
             int XIntervals = (int)(2 * XBoxCoord) / interval, YIntervals = (int)(2 * YBoxCoord) / interval;
             for (int i = 0; i <= XIntervals; i++)
             {
-                writeTextAtLocation(gl, new vec3(XBoxCoord-i*interval, -YBoxCoord, depthRender-2), (XBoxCoord-i*interval).ToString(), 1, 1, 1, 10.0f);
+                if (hiddenDarkColorTheme)
+                    writeTextAtLocation(gl, new vec3(XBoxCoord - i * interval, -YBoxCoord, depthRender - 2), (XBoxCoord - i * interval).ToString(), 1, 1, 1, 10.0f); 
+                else 
+                    writeTextAtLocation(gl, new vec3(XBoxCoord - i * interval, -YBoxCoord, depthRender - 2), (XBoxCoord - i * interval).ToString(), 0.6f, 0.6f, 0.6f, 10.0f);
             }
             for (int i = 0; i <= YIntervals; i++)
             {
-                writeTextAtLocation(gl, new vec3(-XBoxCoord, YBoxCoord-i*interval, depthRender-2), (YBoxCoord-i*interval).ToString(), 1, 1, 1, 10.0f);
+                if (hiddenDarkColorTheme)
+                    writeTextAtLocation(gl, new vec3(-XBoxCoord, YBoxCoord - i * interval, depthRender - 2), (YBoxCoord - i * interval).ToString(), 1, 1, 1, 10.0f);
+                else
+                    writeTextAtLocation(gl, new vec3(-XBoxCoord, YBoxCoord-i*interval, depthRender-2), (YBoxCoord-i*interval).ToString(), 0.6f, 0.6f, 0.6f, 10.0f);
             }
 
             scene.binding(gl);
@@ -720,8 +756,10 @@ namespace SharpGLProgram
            picking.generateBuffers(openGLControl.OpenGL, (int)openGLControl.ActualWidth, (int)openGLControl.ActualHeight); 
 
             //  Set the clear color.
-            gl.ClearColor(0, 0, 0, 0);
-                  
+           if (hiddenDarkColorTheme)
+               gl.ClearColor(0, 0, 0, 0);    // black background
+           else
+               gl.ClearColor(1, 1, 1, 1);   // white background
         
           }
         
@@ -850,6 +888,10 @@ namespace SharpGLProgram
             if (e.Key == Key.LeftCtrl)
             {
                 pickingFlag = 1;
+            }
+            else if (e.Key == Key.RightCtrl)
+            {
+                hiddenDarkColorTheme = !hiddenDarkColorTheme;
             }
         }
 
@@ -2995,7 +3037,10 @@ namespace SharpGLProgram
             picking.generateBuffers(openGLControl.OpenGL, (int)openGLControl.ActualWidth, (int)openGLControl.ActualHeight);
 
             //  Set the clear color.
-            gl.ClearColor(0, 0, 0, 0);
+            if (hiddenDarkColorTheme)
+                gl.ClearColor(0, 0, 0, 0);  // black background
+            else
+                gl.ClearColor(1, 1, 1, 1); // white background
 
             // get the new curvenames from the comboxes 
             assignStringComboBox(ref tboxDev, ref cDEV);

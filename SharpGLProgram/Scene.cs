@@ -581,7 +581,8 @@ namespace SharpGLProgram
             gl.End();
 			
 			// apply white color for in-between contours
-			applyColorTransformation(gl, new vec3(1.0f, 1.0f, 1.0f), 0.6f);
+			//applyColorTransformation(gl, new vec3(1.0f, 1.0f, 1.0f), 0.6f);
+            applyColorTransformation(gl, new vec3(0.95f, 0.95f, 0.95f), 0.6f);
 			int tempCount;
 			gl.Begin(OpenGL.GL_TRIANGLE_STRIP);
 			for (int a = 0; a < tunnelCurve.dataList.Count()-1; a++)
